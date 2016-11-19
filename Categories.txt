@@ -1,0 +1,9 @@
+Dairy & Eggs => Dairy
+Meat & Fish => Animal
+Fruits & Vegetables => Plant
+Nuts, beans & legumes => Nuts
+Grains => Grains
+Beverages => Beverages
+Candy & Sweets => Sweets
+Oils & Fats => Oils
+Other => Other
