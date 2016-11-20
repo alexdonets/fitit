@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @entry.owner_id %>
+</p>
+
+<p>
+  <strong>Food:</strong>
+  <%= @entry.food_id %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @entry.amount %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @entry.day %>
+</p>
+
+<p>
+  <strong>Meal:</strong>
+  <%= @entry.meal %>
+</p>
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
