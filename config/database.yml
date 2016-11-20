@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: lovemufc
+  username: fititadmin
+  password: fititpass
   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: #fitit_development
+  database: fitit_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
