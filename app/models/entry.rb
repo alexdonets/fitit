@@ -1,6 +1,7 @@
 class Entry < ActiveRecord::Base
-=begin
+
   belongs_to :user
+=begin
   has_one :food
 
   DAY_OPTIONS = %w{MON TUE WED THU FRI SAT SUN}

@@ -77,6 +77,28 @@
 </p>
 <% end %>
 
+<h2>Add an entry:</h2>
+
+<%= form_for([@user, @user.entries.build]) do |f| %>
+<p>
+  <%= f.label :food %> <br/>
+  <%= f.text_field :food %>
+</p>
+<p>
+  <%= f.label :amount %> <br/>
+  <%= f.text_field :amount %>
+</p>
+<p>
+  <%= f.label :day %> <br/>
+  <%= f.text_field :day %>
+</p>
+<p>
+  <%= f.label :meal %> <br/>
+  <%= f.text_field :meal %>
+</p>
+<%= f.submit %>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
