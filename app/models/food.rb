@@ -1,7 +1,6 @@
 class Food < ActiveRecord::Base
 
   has_many :entries
-
   belongs_to :user
 
   validates :name, presence: true

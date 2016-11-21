@@ -66,23 +66,27 @@
 </p>
 
 <h2>Entries</h2>
+<% if !@user.entries.empty? %>
 <% @user.entries.each do |entry| %>
 <p>
   <strong>Food</strong>
-  <%= entry.food %>
+  <%= entry.food_id %>
 </p>
 <p>
   <strong>Amount</strong>
   <%= entry.amount %>
 </p>
 <% end %>
+<% end %>
 
 <h2>Add an entry:</h2>
 
 <%= form_for([@user, @user.entries.build]) do |f| %>
+
+
 <p>
-  <%= f.label :food %> <br/>
-  <%= f.text_field :food %>
+  <%= f.label :food_id %> <br/>
+  <%= f.text_field :food_id %>
 </p>
 <p>
   <%= f.label :amount %> <br/>
