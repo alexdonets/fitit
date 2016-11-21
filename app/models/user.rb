@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :foods
 
+  validates_uniqueness_of :username
+
   validates :username, presence: true,
             length: { minimum: 4 }
 
