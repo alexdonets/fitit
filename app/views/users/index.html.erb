@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>Age</th>
+      <th>Activity level</th>
+      <th>Goal</th>
+      <th>Calorie goal</th>
+      <th>Fat goal</th>
+      <th>Carb goal</th>
+      <th>Protein goal</th>
+      <th>Fiber goal</th>
+      <th>Sugar goal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.password %></td>
+        <td><%= user.weight %></td>
+        <td><%= user.height %></td>
+        <td><%= user.age %></td>
+        <td><%= user.activity_level %></td>
+        <td><%= user.goal %></td>
+        <td><%= user.calorie_goal %></td>
+        <td><%= user.fat_goal %></td>
+        <td><%= user.carb_goal %></td>
+        <td><%= user.protein_goal %></td>
+        <td><%= user.fiber_goal %></td>
+        <td><%= user.sugar_goal %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
