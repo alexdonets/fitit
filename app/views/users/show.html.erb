@@ -65,5 +65,19 @@
   <%= @user.sugar_goal %>
 </p>
 
+<h2>Entries</h2>
+<% @user.entries.each do |entry| %>
+<p>
+  <strong>Food</strong>
+  <%= entry.food %>
+</p>
+<p>
+  <strong>Amount</strong>
+  <%= entry.amount %>
+</p>
+<% end %>
+
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

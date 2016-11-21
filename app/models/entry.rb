@@ -1,14 +1,21 @@
 class Entry < ActiveRecord::Base
-
+=begin
   belongs_to :user
+  has_one :food
 
-  validates :owner_id, presence: true
+  DAY_OPTIONS = %w{MON TUE WED THU FRI SAT SUN}
+  MEAL_OPTIONS = %w{BREAKFAST LUNCH DINNER SNACKS}
 
-  validates :food_id, presence: true
+  validates :amount, :presence : true
 
-  validates :amount, presence: true
+  validates :day, :presence : true,
+            :inclusion => { :in => DAY_OPTIONS }
 
-  validates :day, presence: true
+  validates :meal, :presence : true,
+            :inclusion => { :in => MEAL_OPTIONS }
 
-  validates :meal, presence: true
+  validates :user, :presence : true
+
+  validates :food, :presence : true
+=end
 end

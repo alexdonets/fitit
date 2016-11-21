@@ -1,8 +1,8 @@
 class CreateEntries < ActiveRecord::Migration
   def change
     create_table :entries do |t|
-      t.integer :owner_id
-      t.integer :food_id
+      t.integer :user
+      t.integer :food
       t.float :amount
       t.string :day
       t.string :meal
