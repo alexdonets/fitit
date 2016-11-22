@@ -1,0 +1,33 @@
+
+<p id="notice"><%= notice %></p>
+
+<h2>Set Up Your Profile</h2>
+<% if false %>
+<% @user = User.find(params[:id]) %>
+cuurent user id is <%= @user.id %>
+
+<div class="field">
+  <%= @user.label :weight %><br>
+  <%= @user.text_field :weight %>
+</div>
+<div class="field">
+  <%= @user.label :height %><br>
+  <%= @user.text_field :height %>
+</div>
+<div class="field">
+  <%= @user.label :age %><br>
+  <%= @user.number_field :age %>
+</div>
+<div class="field">
+  <%= @user.label :activity_level %><br>
+  <%= @user.number_field :activity_level %>
+</div>
+<div class="field">
+  <%= @user.label :goal %><br>
+  <%= @user.number_field :goal %>
+</div>
+<div class="actions">
+  <%= @user.submit %>
+</div>
+
+<% end %>

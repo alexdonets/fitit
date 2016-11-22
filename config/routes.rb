@@ -1,15 +1,28 @@
 Rails.application.routes.draw do
 
+  #get 'sessions/new'
+
+
+  resources :sessions
   resources :foods
+
   resources :users do
     resources :entries
   end
+
+  post "log_in" => "sessions#create", :as => "log_in"
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  #root 'users#index'
+  root :to => 'sessions#new'
+
+  get "app/views/users/profile.html.erb", to: "users#profile", as: "profile"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

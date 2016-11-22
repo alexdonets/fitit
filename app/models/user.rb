@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   after_initialize :init
 
-  has_many :foods
+  attr_accessor :password_confirmation
 
   validates_uniqueness_of :username
 
@@ -13,7 +13,19 @@ class User < ActiveRecord::Base
             length: { minimum: 4 }
 
   validates :password, presence: true,
-            length: { minimum: 6 }
+            length: { minimum: 6 },
+            :confirmation => true,
+            :on => :create
+
+  validates :email, presence: true
+
+  validates_uniqueness_of :email
+
+  validates_format_of :email,
+      :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
+  validates :password_confirmation, presence: true,
+            :on => :create
 
   def init
     self.calorie_goal ||= 0
@@ -23,6 +35,12 @@ class User < ActiveRecord::Base
     self.fiber_goal ||= 0
     self.sugar_goal ||= 0
   end
+=begin
+  def authenticate(user, password)
+    user = find_by_username(username)
+    if user && user.password == password
+  end
+=end
 
 
 end

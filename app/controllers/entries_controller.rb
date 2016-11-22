@@ -1,4 +1,7 @@
 class EntriesController < ApplicationController
+
+  before_filter :authorize, only: [:create]
+  
   def create
     @user = User.find(params[:user_id])
 
