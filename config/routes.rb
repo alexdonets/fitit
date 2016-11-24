@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :sessions
   resources :foods
+  resources :application
 
   resources :users do
     resources :entries, :path => "diary"
@@ -20,16 +21,21 @@ Rails.application.routes.draw do
   get "entries" => "entries#index", :as => "diary"
   get "new_entry/:food_id" => "entries#new", :as => "new_entry"
 
+  get "homepage" => 'sessions#homepage', :as => "homepage"
+
+  get "generic/homepage" => "generic"
+
   delete "remove_entry/:id" => "entries#destroy", :as => "remove_entry"
 
   match 'diary', to: 'entries#index', via: :all
+  #match 'homepage', to: 'app#homepage'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   #root 'users#index'
-  root :to => 'sessions#new'
+  root :to => 'sessions#homepage'#'sessions#new'
 
   get "app/views/users/profile.html.erb", to: "users#profile", :as =>  "profile"
 

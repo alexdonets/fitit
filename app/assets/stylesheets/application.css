@@ -94,10 +94,10 @@ header .nav li a:visited {
 
 footer {
   height: 25px;
-  width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
+  right: 0;
   cursor: default;
   background: #333333;
   color: white;

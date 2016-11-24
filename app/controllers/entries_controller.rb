@@ -16,9 +16,9 @@ class EntriesController < ApplicationController
 
   def create
 
-    #flash[:notice] = "Food_id passed in create: #{get_params[:food_id]}\n"
     @user = current_user
     @entry = @user.entries.create(entry_params)
+
     respond_to do |format|
       if @entry.save
         format.html { redirect_to diary_url, notice: 'Added entry' }

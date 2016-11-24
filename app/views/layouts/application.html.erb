@@ -15,25 +15,12 @@
         <div class="nav">
           <ul>
             <% if current_user %>
-              <li><%= link_to "Home", edit_user_path(current_user), {:class => "profile"} %></li>
+              <li><%= link_to "Home", homepage_url, {:class => "home"} %></li>
               <li><%= link_to "Diary", diary_url, {:class => "diary"} %></li>
               <li><%= link_to "Foods", foods_path, {:class => "foods"} %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user), {:class => "about", :class => "last"} %></li>
-            <% else %>
-            <% if false %>
-              <li><%= link_to "Foods", foods_path, {:class => "foods"} %></li>
-              <li><%= link_to "About", diary_url, {:class => "about", :class => "last"} %></li>
-              <% end %>
+              <li><%= link_to "Settings", edit_user_path(current_user), {:class => "settings", :class => "last"} %></li>
             <% end %>
 
-            <% if false %>
-
-            <li><a href="#" class="homepage">Home</a></li>
-            <li><a href="#" class="diary">Diary</a></li>
-            <li><a href="#" class="foods">Foods</a></li>
-            <li><a href="#" class="settings">Settings</a></li>
-
-            <% end %>
           </ul>
         </div>
 
@@ -48,13 +35,15 @@
         </ul>
       </div>
   </header>
+  <% if current_user %>
+    Current user: <%= current_user.username %> 
+  <% end %>
+  <%= yield %>
 
-<%= yield %>
-
-  <footer class="base">
+  <!-- <footer class="base">
       <p class="footer-info">This website was created by a student of Wroclaw University of Technology.&emsp;<a href="#">Contacts</a></p>
       <p class="footer-license">Copyright &copy; 2016 FitIt, Inc.</p>
-  </footer>
+  </footer> -->
 
 </body>
 </html>

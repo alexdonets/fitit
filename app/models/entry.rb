@@ -1,7 +1,7 @@
 class Entry < ActiveRecord::Base
 
   belongs_to :user
-#  belongs_to :food
+  belongs_to :food
 
   DAY_OPTIONS = %w{MON TUE WED THU FRI SAT SUN}
   MEAL_OPTIONS = %w{BREAKFAST LUNCH DINNER SNACKS}

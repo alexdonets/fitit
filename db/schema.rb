@@ -40,7 +40,9 @@ ActiveRecord::Schema.define(version: 20161121230202) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username",       limit: 255
-    t.string   "password",       limit: 255
+    t.string   "email",          limit: 255
+    t.string   "password_hash",  limit: 255
+    t.string   "salt",           limit: 255
     t.float    "weight",         limit: 24
     t.float    "height",         limit: 24
     t.integer  "age",            limit: 4
@@ -54,7 +56,6 @@ ActiveRecord::Schema.define(version: 20161121230202) do
     t.integer  "sugar_goal",     limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.string   "email",          limit: 255
   end
 
 end

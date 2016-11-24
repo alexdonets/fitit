@@ -5,9 +5,9 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Username</th>
       <th>Email</th>
-      <th>Password</th>
       <th>Weight</th>
       <th>Height</th>
       <th>Age</th>
@@ -26,9 +26,9 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
-        <td><%= user.password %></td>
         <td><%= user.weight %></td>
         <td><%= user.height %></td>
         <td><%= user.age %></td>

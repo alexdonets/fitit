@@ -5,12 +5,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.new
-    user = User.find_by_username(params[:username])
+    @user = User.new
+    @user = User.authenticate(params[:username], params[:password])
+
     respond_to do |format|
-      if user && user.password == params[:password]
-        session[:user_id] = user.id
-        format.html { redirect_to diary_url, notice: 'Logged In successfully' }
+      if @user
+        session[:user_id] = @user.id
+        format.html { redirect_to homepage_url, notice: "Logged In successfully as #{current_user.username}" }
         format.json { render :index, status: :created, location: @session }
       else
 
