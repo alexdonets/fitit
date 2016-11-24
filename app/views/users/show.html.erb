@@ -1,97 +1,110 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>ID:</strong>
-  <%= @user.id %>
-</p>
+  <p>
+    <strong>ID:</strong>
+    <%= current_user.id %>
+  </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+  <p>
+    <strong>Username:</strong>
+    <%= current_user.username %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= current_user.email %>
+  </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+  <p>
+    <strong>Password:</strong>
+    <%= current_user.password %>
+  </p>
 
-<p>
-  <strong>Weight:</strong>
-  <%= @user.weight %>
-</p>
+  <p>
+    <strong>Weight:</strong>
+    <%= current_user.weight %>
+  </p>
 
-<p>
-  <strong>Height:</strong>
-  <%= @user.height %>
-</p>
+  <p>
+    <strong>Height:</strong>
+    <%= current_user.height %>
+  </p>
 
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
+  <p>
+    <strong>Age:</strong>
+    <%= current_user.age %>
+  </p>
 
-<p>
-  <strong>Activity level:</strong>
-  <%= @user.activity_level %>
-</p>
+  <p>
+    <strong>Activity level:</strong>
+    <%= current_user.activity_level %>
+  </p>
 
-<p>
-  <strong>Goal:</strong>
-  <%= @user.goal %>
-</p>
+  <p>
+    <strong>Goal:</strong>
+    <%= current_user.goal %>
+  </p>
 
-<p>
-  <strong>Calorie goal:</strong>
-  <%= @user.calorie_goal %>
-</p>
+  <p>
+    <strong>Calorie goal:</strong>
+    <%= current_user.calorie_goal %>
+  </p>
 
-<p>
-  <strong>Fat goal:</strong>
-  <%= @user.fat_goal %>
-</p>
+  <p>
+    <strong>Fat goal:</strong>
+    <%= current_user.fat_goal %>
+  </p>
 
-<p>
-  <strong>Carb goal:</strong>
-  <%= @user.carb_goal %>
-</p>
+  <p>
+    <strong>Carb goal:</strong>
+    <%= current_user.carb_goal %>
+  </p>
 
-<p>
-  <strong>Protein goal:</strong>
-  <%= @user.protein_goal %>
-</p>
+  <p>
+    <strong>Protein goal:</strong>
+    <%= current_user.protein_goal %>
+  </p>
 
-<p>
-  <strong>Fiber goal:</strong>
-  <%= @user.fiber_goal %>
-</p>
+  <p>
+    <strong>Fiber goal:</strong>
+    <%= current_user.fiber_goal %>
+  </p>
 
-<p>
-  <strong>Sugar goal:</strong>
-  <%= @user.sugar_goal %>
-</p>
+  <p>
+    <strong>Sugar goal:</strong>
+    <%= current_user.sugar_goal %>
+  </p>
 
-<h2>Entries</h2>
-<% if !@user.entries.empty? %>
-<% @user.entries.each do |entry| %>
-<p>
-  <strong>Food</strong>
-  <%= entry.food_id %>
-</p>
-<p>
-  <strong>Amount</strong>
-  <%= entry.amount %>
-</p>
-<% end %>
+  <h2>Entries</h2>
+  <% if !current_user.entries.empty? %>
+    <% current_user.entries.each do |entry| %>
+    <p>
+      <strong>ID</strong>
+      <%= entry.id %>
+    </p>
+    <p>
+      <strong>Food</strong>
+      <%= entry.food_id %>
+    </p>
+    <p>
+      <strong>Amount</strong>
+      <%= entry.amount %>
+    </p>
+    <p>
+      <strong>Day</strong>
+      <%= entry.day %>
+    </p>
+    <p>
+      <strong>Meal</strong>
+      <%= entry.meal %>
+    </p>
+    <p><%= button_to 'Destroy', remove_entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <% end %>
 <% end %>
 
 <h2>Add an entry:</h2>
 
-<%= form_for([@user, @user.entries.build]) do |f| %>
+<%= form_for([current_user, current_user.entries.build]) do |f| %>
 
 
 <p>
@@ -115,5 +128,5 @@
 
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edit', edit_user_path(current_user) %> |
 <%= link_to 'Back', users_path %>

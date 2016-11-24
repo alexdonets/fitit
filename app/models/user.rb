@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :password_confirmation
 
-  validates_uniqueness_of :username
+  validates_uniqueness_of :username, :case_sensitive => false
 
   validates :username, presence: true,
             length: { minimum: 4 }
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
 
-  validates_uniqueness_of :email
+  validates_uniqueness_of :email, :case_sensitive => false
 
   validates_format_of :email,
       :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

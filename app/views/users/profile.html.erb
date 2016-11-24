@@ -2,32 +2,32 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Set Up Your Profile</h2>
-<% if false %>
-<% @user = User.find(params[:id]) %>
-cuurent user id is <%= @user.id %>
 
+
+<%# @user = User.find(params[:id]) %>
+cuurent user is <%= @current_user.name %>
+<% if true %>
 <div class="field">
-  <%= @user.label :weight %><br>
-  <%= @user.text_field :weight %>
+  <%= current_user.label :weight %><br>
+  <%= current_user.text_field :weight %>
 </div>
 <div class="field">
-  <%= @user.label :height %><br>
-  <%= @user.text_field :height %>
+  <%= current_user.label :height %><br>
+  <%= current_user.text_field :height %>
 </div>
 <div class="field">
-  <%= @user.label :age %><br>
-  <%= @user.number_field :age %>
+  <%= current_user.label :age %><br>
+  <%= current_user.number_field :age %>
 </div>
 <div class="field">
-  <%= @user.label :activity_level %><br>
-  <%= @user.number_field :activity_level %>
+  <%= current_user.label :activity_level %><br>
+  <%= current_user.number_field :activity_level %>
 </div>
 <div class="field">
-  <%= @user.label :goal %><br>
-  <%= @user.number_field :goal %>
+  <%= current_user.label :goal %><br>
+  <%= current_user.number_field :goal %>
 </div>
 <div class="actions">
-  <%= @user.submit %>
+  <%= current_user.submit %>
 </div>
-
 <% end %>

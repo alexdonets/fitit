@@ -1,6 +1,41 @@
 <h1>Editing User</h1>
 
-<%= render 'form' %>
+<%#= render 'form' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<h2>Set Up Your Profile</h2>
+
+<% @user = current_user %>
+
+<%= form_for(@user) do |f| %>
+<%# @user = User.find(params[:id]) %>
+  current user is <%= current_user.username %>
+
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br>
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :activity_level %><br>
+    <%= f.number_field :activity_level %>
+  </div>
+  <div class="field">
+    <%= f.label :goal %><br>
+    <%= f.number_field :goal %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+
+<%#= link_to 'Show', @user %>
+<%#= link_to 'Back', users_path %>

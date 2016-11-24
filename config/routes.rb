@@ -7,13 +7,22 @@ Rails.application.routes.draw do
   resources :foods
 
   resources :users do
-    resources :entries
+    resources :entries, :path => "diary"
   end
 
   post "log_in" => "sessions#create", :as => "log_in"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
+
   get "signup" => "users#new", :as => "signup"
+
+  post "create_entry/:food_id" => "entries#create", :as => "create_entry"
+  get "entries" => "entries#index", :as => "diary"
+  get "new_entry/:food_id" => "entries#new", :as => "new_entry"
+
+  delete "remove_entry/:id" => "entries#destroy", :as => "remove_entry"
+
+  match 'diary', to: 'entries#index', via: :all
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -22,7 +31,7 @@ Rails.application.routes.draw do
   #root 'users#index'
   root :to => 'sessions#new'
 
-  get "app/views/users/profile.html.erb", to: "users#profile", as: "profile"
+  get "app/views/users/profile.html.erb", to: "users#profile", :as =>  "profile"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
