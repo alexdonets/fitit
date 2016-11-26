@@ -6,6 +6,7 @@ class FoodsController < ApplicationController
   # GET /foods.json
   def index
     @foods = Food.all
+    @food_categories = Foods.select(:category).map(&:category).uniq
   end
 
   # GET /foods/1

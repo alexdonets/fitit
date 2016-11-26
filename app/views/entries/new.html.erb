@@ -1,6 +1,8 @@
 <h2>Add an entry:</h2>
 
 <%= form_for([current_user, current_user.entries.build]) do |f| %>
+
+  Current food id: <%= params[:food_id] %>
   <%= f.hidden_field :food_id, :value => params[:food_id] %>
   <p>
     <%= f.label :amount %> <br/>

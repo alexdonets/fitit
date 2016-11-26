@@ -6,44 +6,45 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="<%= asset_path 'csshake.css'%>" title="text/css">
 </head>
-<body>
-  <header class="base">
-      <div class="logo">
-        <a href="#"><img id="logo_img" src="<%= asset_path 'logo.png' %>"></a>
-      </div>
-        <div class="nav">
-          <ul>
-            <% if current_user %>
-              <li><%= link_to "Home", homepage_url, {:class => "home"} %></li>
-              <li><%= link_to "Diary", diary_url, {:class => "diary"} %></li>
-              <li><%= link_to "Foods", foods_path, {:class => "foods"} %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user), {:class => "settings", :class => "last"} %></li>
-            <% end %>
+<body class=" <%= @login ? 'login' : '' %> <%= @signup ? 'signup' : '' %> <%= @settings ? 'settings' : '' %> ">
 
-          </ul>
-        </div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
 
-      <div class="nav session">
-        <ul>
-          <% if current_user %>
-            <li><%= link_to "Log Out", logout_path, {:class => "last"} %></a></li>
-          <% else %>
-            <li><%= link_to "Log In", login_path %></li>
-            <li><%= link_to "Sign Up", signup_path, {:class => "last"} %></li>
-          <% end %>
-        </ul>
-      </div>
-  </header>
-  <% if current_user %>
-    Current user: <%= current_user.username %> 
-  <% end %>
+    <div class="container">
+
+      <ul class="nav navbar-nav nav-left">
+        <% if current_user %>
+          <li><%= link_to "Fitit", root_url, { :class => "logo"} %></li>
+          <li class="<%= 'active' if current_page?(homepage_url) %>"><%= link_to "Home", root_url  %></li>
+          <li class="<%= 'active' if current_page?(user_path(current_user.id)) %>"><%= link_to "Profile", user_path(current_user.id) %></li>
+          <li class="<%= 'active' if current_page?(diary_url) %>"><%= link_to "Diary", diary_url %></li>
+          <li class="<%= 'active' if current_page?(foods_path) %>"><%= link_to "Foods", foods_path %></li>
+          <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>"><%= link_to "Settings", edit_user_path(current_user) %></li>
+        <% else %>
+          <li><%= link_to "fitit", homepage_url, { :class => "logo"} %></li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav nav-right">
+        <% if current_user %>
+          <li class="<%= 'active' if current_page?(logout_path) %>"><%= link_to "Log Out", logout_path, {:class => "last"} %></a></li>
+        <% else %>
+          <li class="<%= 'active' if current_page?(login_path) %>"><%= link_to "Log In", login_path %></li>
+          <li class="<%= 'active' if current_page?(signup_path) %>"><%= link_to "Sign Up", signup_path, {:class => "last"} %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  </nav>
+
+  <div class="container">
+
+
   <%= yield %>
 
-  <!-- <footer class="base">
-      <p class="footer-info">This website was created by a student of Wroclaw University of Technology.&emsp;<a href="#">Contacts</a></p>
-      <p class="footer-license">Copyright &copy; 2016 FitIt, Inc.</p>
-  </footer> -->
+  </div>
 
 </body>
 </html>

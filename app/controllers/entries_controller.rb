@@ -9,23 +9,19 @@ class EntriesController < ApplicationController
   end
 
   def new
-
-    #flash[:notice] = "Food_id passed: #{params[:food_id]}\n"
-    #get_params.merge(params)
   end
 
   def create
 
-    @user = current_user
-    @entry = @user.entries.create(entry_params)
+    @entry = current_user.entries.create(entry_params)
 
     respond_to do |format|
       if @entry.save
         format.html { redirect_to diary_url, notice: 'Added entry' }
         format.json { head :no_content }
       else
-        format.html { render :new }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
+        format.html { redirect_to new_entry_url(entry_params[:food_id]), notice: "Can't create an entry" }
+        format.json { render json:  @entry.errors, status: :unprocessable_entity }
       end
 
     end
@@ -48,11 +44,7 @@ class EntriesController < ApplicationController
     def set_entry
         @entry = Entry.find(params[:id])
     end
-=begin
-    def get_params
-        @rec_params = Hash.new
-    end
-=end
+
     def entry_params
       params.require(:entry).permit(:food_id, :amount, :day, :meal)
     end

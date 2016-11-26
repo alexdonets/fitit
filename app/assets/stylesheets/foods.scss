@@ -1,3 +1,22 @@
 // Place all the styles related to the Foods controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.foods-content {
+  margin-left: 50px;
+  margin-top: 70px;
+  text-align: left;
+}
+
+.side-menu {
+  padding: 0;
+  width: 23%;
+  float: left;
+  margin-right: 50px;
+}
+
+.main-form {
+  width: 72%;
+  float: right;
+  padding: 20px 40px;
+}

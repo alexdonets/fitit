@@ -2,41 +2,43 @@
 
 <%#= render 'form' %>
 
-<h2>Sign Up</h2>
 
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="signup-form">
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <h1 class="title">Sign Up:</h1>
+
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :username %><br>
+      <%= f.text_field :username, placeholder: "Enter your username" %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email, placeholder: "example@mail.com" %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, placeholder: "Password" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmationn %><br>
+      <%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Sign Up", :class => "signup-button"  %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-
-<%= link_to 'Back', users_path %>
+</div>

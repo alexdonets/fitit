@@ -1,4 +1,25 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
+
+
+<div class="foods-content row">
+
+  <div class="base-form side-menu ">
+    <ul class="food-groups">
+      <%= @food_categories.each do |category| %>
+        <li>Foods::CATEGORIES.key(category)</li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="base-form main-form">
+    More text <br>
+    Another line
+  </div>
+
+
+</div>
+
+
 
 <h1>Listing Foods</h1>
 

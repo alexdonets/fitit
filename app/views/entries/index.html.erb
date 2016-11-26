@@ -1,53 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Entries</h2>
+
 <% if !current_user.entries.empty? %>
-  <% current_user.entries.each do |entry| %>
-  <p>
-    <strong>ID</strong>
-    <%= entry.id %>
-  </p>
-  <p>
-    <strong>Food</strong>
-    <%= entry.food_id %><br>
-    <%= @foods.find_by_id(entry.food_id).name %>
-  </p>
-  <p>
-    <strong>Amount</strong>
-    <%= entry.amount %>
-  </p>
-  <p>
-    <strong>Day</strong>
-    <%= entry.day %>
-  </p>
-  <p>
-    <strong>Meal</strong>
-    <%= entry.meal %>
-  </p>
-  <p><%= link_to 'Destroy', remove_entry_url(entry), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-<% end %>
-<% end %>
+  <% @user = current_user %>
+  <% @user.entries.each do |entry| %>
 
-<h2>Add an entry:</h2>
+    <p>
+      <strong>ID</strong>
+      <%= entry.id %>
+    </p>
+    <p>
+      <strong>Food</strong>
+      <%= entry.food_id %><br>
+      <%= @foods.find_by_id(entry.food_id).name %>
+    </p>
+    <p>
+      <strong>Amount</strong>
+      <%= entry.amount %>
+    </p>
+    <p>
+      <strong>Day</strong>
+      <%= entry.day %>
+    </p>
+    <p>
+      <strong>Meal</strong>
+      <%= entry.meal %>
+    </p>
+    <p><%= link_to 'Destroy', remove_entry_url(entry), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
-<%= form_for([current_user, current_user.entries.build]) do |f| %>
+  <% end %>
 
 
-<p>
-<%= f.label :food_id %> <br/>
-<%= f.text_field :food_id %>
-</p>
-<p>
-<%= f.label :amount %> <br/>
-<%= f.text_field :amount %>
-</p>
-<p>
-<%= f.label :day %> <br/>
-<%= f.text_field :day %>
-</p>
-<p>
-<%= f.label :meal %> <br/>
-<%= f.text_field :meal %>
-</p>
-<%= f.submit %>
 <% end %>

@@ -1,132 +1,130 @@
 <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>ID:</strong>
-    <%= current_user.id %>
-  </p>
+<div class="profile-form">
 
-  <p>
-    <strong>Username:</strong>
-    <%= current_user.username %>
-  </p>
+  <table class="macros-tab">
+    <tr class="top-row">
+      <td class="calories">
+        <span>Calories</span>
+      </td>
+      <td>
+        Carbs
+      </td>
+      <td>
+        Protein
+      </td>
+      <td>
+        Fat
+      </td>
+    </tr>
+    <tr class="bottom-row">
+      <td class="calories">
+        <% if current_user.calorie_goal > 0 %>
+          <%=current_user.calorie_goal%>
+        <% end %>
+      </td>
+      <td class="carb">
+        <% if current_user.carb_goal > 0 %>
+          <%=current_user.carb_goal%>
+        <% end %>
+      </td>
+      <td class="protein">
+        <% if current_user.protein_goal > 0 %>
+          <%=current_user.protein_goal%>
+        <% end %>
+      </td>
+      <td class="fat">
+        <% if current_user.fat_goal > 0 %>
+          <% if current_user.fat_goal < 100 %>
+            <span style="margin-left:-30px"><%=current_user.fat_goal%></span>
+          <% else %>
+            <span style="margin-left:-45px"><%=current_user.fat_goal%></span>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
 
-  <p>
-    <strong>Email:</strong>
-    <%= current_user.email %>
-  </p>
+  </table>
 
-  <p>
-    <strong>Password:</strong>
-    <%= current_user.password %>
-  </p>
+  <div class="profile-tab">
 
-  <p>
-    <strong>Weight:</strong>
-    <%= current_user.weight %>
-  </p>
+    <p class="secondary-title"><%= current_user.username.capitalize %></p>
+    <!-- <p class="title username"><%= current_user.username.capitalize %> </p> -->
 
-  <p>
-    <strong>Height:</strong>
-    <%= current_user.height %>
-  </p>
+    <table>
 
-  <p>
-    <strong>Age:</strong>
-    <%= current_user.age %>
-  </p>
+      <tr>
+        <div class="field">
+          <td><strong>Weight:</strong></td>
+          <td><%= current_user.weight %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>Height:</strong></td>
+          <td><%= current_user.height %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>Age:</strong></td>
+          <td><%= current_user.age %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>Sex:</strong></td>
+          <td>
+            <%= User::SEX.key(current_user.sex) %>
+          </td>
+        </div>
+      </tr>
+      <% if current_user.bodyfat %>
+        <tr>
+          <div class="field">
+            <td><strong>Bodyfat:</strong></td>
+            <td><%= current_user.bodyfat %></td>
+          </div>
+        </tr>
+      <% end %>
+      <tr>
+        <div class="field">
+          <td><strong>BMR:</strong></td>
+          <td><%= current_user.bmr %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>TDEE:</strong></td>
+          <td><%= current_user.tdee %></td>
+        </div>
+      </tr>
 
-  <p>
-    <strong>Activity level:</strong>
-    <%= current_user.activity_level %>
-  </p>
+      <tr>
+        <div class="field">
+          <td><strong>Activity level:</strong></td>
+          <td><%= User::ACTIVITY.key(current_user.activity_level) %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>Goal:</strong></td>
+          <td><%= User::GOAL.key(current_user.goal) %></td>
+        </div>
+      </tr>
+    </table>
 
-  <p>
-    <strong>Goal:</strong>
-    <%= current_user.goal %>
-  </p>
+    <div class="actions">
+      <div class="button-set">
+        <p>
+        <%= link_to 'Edit', edit_user_path(current_user), :class => "button edit-button" %>
+        <%= link_to 'Set macros', edit_user_path(current_user), :class => "button macros-button" %></p>
+        <p><%= link_to 'Delete profile', current_user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button delete-button" %></p>
+      </div>
 
-  <p>
-    <strong>Calorie goal:</strong>
-    <%= current_user.calorie_goal %>
-  </p>
-
-  <p>
-    <strong>Fat goal:</strong>
-    <%= current_user.fat_goal %>
-  </p>
-
-  <p>
-    <strong>Carb goal:</strong>
-    <%= current_user.carb_goal %>
-  </p>
-
-  <p>
-    <strong>Protein goal:</strong>
-    <%= current_user.protein_goal %>
-  </p>
-
-  <p>
-    <strong>Fiber goal:</strong>
-    <%= current_user.fiber_goal %>
-  </p>
-
-  <p>
-    <strong>Sugar goal:</strong>
-    <%= current_user.sugar_goal %>
-  </p>
-
-  <h2>Entries</h2>
-  <% if !current_user.entries.empty? %>
-    <% current_user.entries.each do |entry| %>
-    <p>
-      <strong>ID</strong>
-      <%= entry.id %>
-    </p>
-    <p>
-      <strong>Food</strong>
-      <%= entry.food_id %>
-    </p>
-    <p>
-      <strong>Amount</strong>
-      <%= entry.amount %>
-    </p>
-    <p>
-      <strong>Day</strong>
-      <%= entry.day %>
-    </p>
-    <p>
-      <strong>Meal</strong>
-      <%= entry.meal %>
-    </p>
-    <p><%= button_to 'Destroy', remove_entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-  <% end %>
-<% end %>
-
-<h2>Add an entry:</h2>
-
-<%= form_for([current_user, current_user.entries.build]) do |f| %>
-
-
-<p>
-  <%= f.label :food_id %> <br/>
-  <%= f.text_field :food_id %>
-</p>
-<p>
-  <%= f.label :amount %> <br/>
-  <%= f.text_field :amount %>
-</p>
-<p>
-  <%= f.label :day %> <br/>
-  <%= f.text_field :day %>
-</p>
-<p>
-  <%= f.label :meal %> <br/>
-  <%= f.text_field :meal %>
-</p>
-<%= f.submit %>
-<% end %>
-
+    </div>
+  </div>
 
 
-<%= link_to 'Edit', edit_user_path(current_user) %> |
-<%= link_to 'Back', users_path %>
+
+</div>

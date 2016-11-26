@@ -1,3 +1,215 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+ *= require bootstrap-select
+*/
+
+//= require bootstrap-select
+
+.settings .settings-form, .profile-form {
+  margin: auto;
+  margin-top: 90px;
+  background: white;
+  width: 400px;
+  padding: 30px 60px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 16px;
+  font-family: fantasy;
+  text-align: left;
+}
+
+.profile-form {
+  width: 500px;
+  margin-top: 90px;
+  padding-top: 60px;
+}
+
+.settings .main-title {
+  position: absolute;
+  margin-left: -58px;
+  margin-top: -63px;
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 40px;
+}
+
+.settings .settings-form table td * {
+   margin: 5px 0;
+   margin-right: 5px;
+}
+
+.settings .settings-form .secondary-title {
+  // margin-bottom: 10px;
+  color: #16a085;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.profile-form .secondary-title {
+  color: #16a085;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 45px;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.profile-form .title.username {
+  font-size: 30px;
+}
+
+.settings .settings-form table, .profile-form table {
+  display: block;
+}
+
+.settings .settings-form input, .profile-form .profile-tab td {
+  width: 65px;
+  border: 1px solid #bdc3c7;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.profile-form .profile-tab td {
+  border: none;
+  width: 120px;
+  padding: 4px;
+}
+
+.settings .settings-form .button-set, .profile-form .button-set {
+  margin-top: 20px;
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+}
+
+.settings .settings-form  input.update-button {
+  float: left;
+  width: 90px;
+  margin-top: 15px;
+  background: #2ecc71;
+  border-bottom: 3px solid #27ae60;
+  padding: 5px 20px;
+  text-align: center;
+}
+
+
+.settings .settings-form .cancel-button {
+  float: right;
+  width: 90px;
+  color: inherit;
+  margin-top: 15px;
+  border-radius: 4px;
+  background: #2ecc71;
+  border-bottom: 3px solid #27ae60;
+  padding: 5px 20px;
+  text-align: center;
+}
+
+.settings .settings-form .cancel-button:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+select {
+  width: 100%;
+  padding: 5px;
+  background: white;
+  border-radius: 4px;
+}
+
+.macros-tab {
+  position: absolute;
+  margin-left: -76px;
+  margin-top: -88px;
+  width: 600px;
+}
+.macros-tab tr.top-row {
+  color: white;
+}
+
+.macros-tab td {
+//  margin-right: 5px;
+  font-weight: bold;
+  font-family: Arial;
+  position: relative;
+  display: inline-block;
+  font-size: 35px;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.macros-tab tr.bottom-row td {
+  color: #16a085;
+  margin-top: 18px;
+  padding: 0 38px;
+
+}
+
+
+.macros-tab td.calories {
+  font-size: 40px;
+  padding: 0 15px;
+}
+
+.macros-tab tr.bottom-row td{
+  font-size: 40px;
+  padding: 0 40px;
+}
+
+.macros-tab tr.bottom-row td.calories{
+  font-size: 40px;
+  padding: 0 30px;
+  padding-left: 50px;
+  margin-right: 6px;
+}
+
+
+.macros-tab tr.bottom-row td.protein{
+  margin-left: -15px;
+}
+
+.profile-form .profile-tab {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.profile-tab td * {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.profile-tab .button {
+  color: inherit;
+  display: inline-block;
+  margin-top: 5px;
+  border-radius: 4px;
+  background: #2ecc71;
+  border-bottom: 3px solid #27ae60;
+  padding: 5px 30px;
+  text-align: center;
+  width: 40%;
+}
+
+.profile-form .button:hover {
+  text-decoration: none;
+}
+
+.profile-form .button.edit-button {
+  margin-right: 65px;
+}
+
+.profile-form .button.macros-button {
+
+}
+
+.profile-form .button.delete-button {
+  background: #e74c3c;
+  border-bottom: 3px solid #c0392b;
+  width: 100%;
+  color: #ecf0f1;
+}

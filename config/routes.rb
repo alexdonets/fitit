@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'pages/homepage'
+
+  get 'pages/about'
+
   #get 'sessions/new'
 
 
@@ -21,13 +25,14 @@ Rails.application.routes.draw do
   get "entries" => "entries#index", :as => "diary"
   get "new_entry/:food_id" => "entries#new", :as => "new_entry"
 
-  get "homepage" => 'sessions#homepage', :as => "homepage"
+  #get "users/:id/edit" => "users#edit", :as => "edit"
 
-  get "generic/homepage" => "generic"
+  get "homepage" => 'pages#homepage', :as => "homepage"
 
   delete "remove_entry/:id" => "entries#destroy", :as => "remove_entry"
 
   match 'diary', to: 'entries#index', via: :all
+  match 'edit', to: 'users#edit', via: :all
   #match 'homepage', to: 'app#homepage'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -35,7 +40,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   #root 'users#index'
-  root :to => 'sessions#homepage'#'sessions#new'
+  root :to => 'entries#index'#'pages#homepage'
 
   get "app/views/users/profile.html.erb", to: "users#profile", :as =>  "profile"
 

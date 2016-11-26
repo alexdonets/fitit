@@ -3,6 +3,16 @@ class Food < ActiveRecord::Base
   has_many :entries
   belongs_to :user
 
+  CATEGORIES = { "Dairy & Eggs" => "Dairy",
+                "Meat & Fish" => "Animal",
+                "Fruits & Vegetables" => "Plant",
+                "Nuts, beans & legumes" => "Nuts",
+                "Grains" => "Grains",
+                "Beverages" => "Beverages",
+                "Candy & Sweets" => "Sweets",
+                "Oils & Fats" => "Oils",
+                "Other" => "Other" }
+
   validates :name, presence: true
 
   validates :portion, presence: true
@@ -14,10 +24,6 @@ class Food < ActiveRecord::Base
   validates :carb, presence: true
 
   validates :protein, presence: true
-
-  validates :fiber, presence: true
-
-  validates :sugar, presence: true
 
   validates :category, presence: true
 
