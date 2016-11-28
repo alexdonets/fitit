@@ -3,13 +3,15 @@ class Food < ActiveRecord::Base
   has_many :entries
   belongs_to :user
 
+  default_scope { order(name: :asc) }
+
   CATEGORIES = { "Dairy & Eggs" => "Dairy",
                 "Meat & Fish" => "Animal",
                 "Fruits & Vegetables" => "Plant",
                 "Nuts, beans & legumes" => "Nuts",
                 "Grains" => "Grains",
-                "Beverages" => "Beverages",
-                "Candy & Sweets" => "Sweets",
+                "Drinks" => "Beverages",
+                "Sweets & Candy" => "Sweets",
                 "Oils & Fats" => "Oils",
                 "Other" => "Other" }
 

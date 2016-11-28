@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
       if @user
         session[:user_id] = @user.id
-        format.html { redirect_to homepage_url, notice: "Logged In successfully as #{current_user.username}" }
+        format.html { redirect_to root_path, notice: "Logged In successfully as #{current_user.username}" }
         format.json { render :index, status: :created, location: @session }
       else
         format.html { redirect_to login_url }

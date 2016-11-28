@@ -1,27 +1,93 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
-
 <div class="foods-content row">
 
-  <div class="base-form side-menu ">
+  <div class="base-form side-menu">
     <ul class="food-groups">
-      <%= @food_categories.each do |category| %>
-        <li>Foods::CATEGORIES.key(category)</li>
+      <% @food_categories.each do |category| %>
+        <li class="<%="#{Food::CATEGORIES[category]}"%>" data-content=".<%= "#{Food::CATEGORIES[category]}-content"%>">  <%="#{category}"%>  </li>
       <% end %>
     </ul>
   </div>
 
   <div class="base-form main-form">
-    More text <br>
-    Another line
-  </div>
+      <%#= "Day selected is #{params[:day_selected]} and meal is #{params}"  %>
+      <% @food_categories.each do |cat| %>
 
+        <div class="<%="#{Food::CATEGORIES[cat]}-content"%>">
+          <p class="main-title"><%= cat %></p>
+          <ul class="foods">
+
+            <% @foods.where(category: "#{Food::CATEGORIES[cat]}").order(name: :asc).find_each do |food| %>
+
+              <%= form_for([current_user, current_user.entries.build]) do |f| %>
+
+                <%= f.hidden_field :food_id, :value => food.id %>
+                <%= f.hidden_field :day, :value => params[:day_selected] ? params[:day_selected] : @current_weekday %>
+                <%= f.hidden_field :meal, :value => params[:meal_selected] ? params[:meal_selected] : @current_meal %>
+
+              <li class="group">
+                <div class="food-field">
+                  <%= "#{food.id} #{food.name}, "%><span class="small"><%="#{food.portion}"%></span>
+                  <span class="nutrition">
+                    <span class="cals>"><%="#{food.calories}"%></span><span class="small">cals</span>
+                    <span class="macros">
+                      <table class="macros-table">
+                        <tr>
+                          <td>
+                            <span>C:</span>
+                          </td>
+                          <td>
+                            <span><%="#{food.carb == food.carb.round ? food.carb.round : food.carb}"%></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span>P:</span>
+                          </td>
+                          <td>
+                            <span><%="#{food.protein == food.protein.round ? food.protein.round : food.protein}"%></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span>F:</span>
+                          </td>
+                          <td>
+                            <span><%="#{food.fat == food.fat.round ? food.fat.round : food.fat}"%></span>
+                          </td>
+                        </tr>
+
+                      </table>
+
+                    </span>
+                  </span>
+                </div>
+
+                <%= f.text_field :amount, :class => "input-amount", placeholder: "x#{food.portion}" %>
+
+                <%= f.submit "Add", :class => "add-btn" %>
+
+              </li>
+              <% end %>
+
+            <% end %>
+
+
+          </ul>
+        </div>
+      <% end %>
+
+  </div>
 
 </div>
 
 
+<!-- <script src="<%#= asset_path 'foodscript.js'%>"></script> -->
 
-<h1>Listing Foods</h1>
+
+
+<!-- <h1>Listing Foods</h1>
 
 <table>
   <thead>
@@ -65,4 +131,4 @@
 
 <br>
 
-<%= link_to 'New Food', new_food_path %>
+<%= link_to 'New Food', new_food_path %> -->

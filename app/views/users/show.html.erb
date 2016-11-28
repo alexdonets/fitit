@@ -2,6 +2,57 @@
 
 <div class="profile-form">
 
+  <!-- Modal for macros -->
+  <div class="modal-macros">
+    <div class="macros-content">
+      <p class="modal-title">Set macros</p>
+      <% @user = current_user %>
+      <%= form_for(@user, :url => :update_macros) do |f| %>
+
+        <table>
+
+          <tr>
+            <div class="field">
+              <td><%= f.label :calorie_goal, "Calories:" %></td>
+              <td><%= f.number_field :calorie_goal %></td>
+            </div>
+          </tr>
+          <tr>
+            <div class="field">
+              <td><%= f.label :carb_goal, "Carbs:" %></td>
+              <td><%= f.number_field :carb_goal %></td>
+            </div>
+          </tr>
+          <tr>
+            <div class="field">
+              <td><%= f.label :protein_goal, "Protein:" %></td>
+              <td><%= f.number_field :protein_goal %></td>
+            </div>
+          </tr>
+          <tr>
+            <div class="field">
+              <td><%= f.label :fat_goal, "Fat:" %></td>
+              <td><%= f.number_field :fat_goal%> </td>
+            </div>
+          </tr>
+
+        </table>
+
+        <div class="actions">
+          <div class="button-set">
+            <p><%= f.submit "Update", :class => "button-green update-button" %>
+              <a href="#" class="button-red cancel-button" id="close-macros">Cancel</a>
+            <%#= link_to "Cancel", user_url(current_user),   :class => "button-green cancel-button" %></p>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  <!-- End of modal -->
+
   <table class="macros-tab">
     <tr class="top-row">
       <td class="calories">
@@ -49,7 +100,6 @@
   <div class="profile-tab">
 
     <p class="secondary-title"><%= current_user.username.capitalize %></p>
-    <!-- <p class="title username"><%= current_user.username.capitalize %> </p> -->
 
     <table>
 
@@ -117,9 +167,10 @@
     <div class="actions">
       <div class="button-set">
         <p>
-        <%= link_to 'Edit', edit_user_path(current_user), :class => "button edit-button" %>
-        <%= link_to 'Set macros', edit_user_path(current_user), :class => "button macros-button" %></p>
-        <p><%= link_to 'Delete profile', current_user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button delete-button" %></p>
+        <%= link_to 'Edit', edit_user_path(current_user), :class => "button-green button edit-button" %>
+        <a href="#set_macros" class="button-green button macros-button" id="open-macros">Set macros</a>
+        <%#= link_to 'Set macros', edit_macros_url, :class => "button-green button macros-button" %></p>
+        <p><%= link_to 'Delete profile', current_user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button-red button delete-button" %></p>
       </div>
 
     </div>
@@ -128,3 +179,4 @@
 
 
 </div>
+<script src="<%= asset_path 'user_actions.js'%>"></script>

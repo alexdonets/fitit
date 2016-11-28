@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   GOAL = {"Lose 1 kg/week" => -1,
           "Lose 0.5 kg/week" => -0.5,
+          "Lose 0.25 kg/week" => -0.25,
           "Maintain weight" => 0,
           "Gain 0.25 kg/week" => 0.25,
           "Gain 0.5 kg/week" => 0.5}
@@ -59,6 +60,19 @@ class User < ActiveRecord::Base
 
   validates :age, :inclusion => { :in => 10..100 },
                   :on => :update
+
+  validates :bodyfat, presence: false,
+                      :inclusion => { :in => 1..100 },
+                      :on => :update
+
+  validates :carb_goal, presence: true
+  validates :carb_goal, presence: true
+  validates :protein_goal, presence: true
+  validates :fat_goal, presence: true
+  validates_numericality_of :calorie_goal, greater_than_or_equal_to: 0
+  validates_numericality_of :carb_goal, greater_than_or_equal_to: 0
+  validates_numericality_of :protein_goal, greater_than_or_equal_to: 0
+  validates_numericality_of :fat_goal, greater_than_or_equal_to: 0
 
 
   def init
@@ -177,6 +191,49 @@ class User < ActiveRecord::Base
     #   return "Female"
     # end
   end
+
+  def manual_macros(params)
+
+    # if validate_macros(params)
+    #   self.calorie_goal = params[:calorie_goal]
+    #   self.carb_goal = params[:carb_goal]
+    #   self.protein_goal = params[:protein_goal]
+    #   self.fat_goal = params[:fat_goal]
+    #   self.fiber_goal = current_user.calorie_goal / 100
+    #   self.sugar_goal = current_user.calorie_goal / 30
+    # else
+    #   return false
+    #
+    # end
+
+    self.calorie_goal = params[:calorie_goal]
+    self.carb_goal = params[:carb_goal]
+    self.protein_goal = params[:protein_goal]
+    self.fat_goal = params[:fat_goal]
+    self.fiber_goal = self.calorie_goal / 100
+    self.sugar_goal = self.calorie_goal / 30
+
+    # self.calorie_goal = params[:calorie_goal]
+    # self.carb_goal = params[:carb_goal]
+    # self.protein_goal = params[:protein_goal]
+    # self.fat_goal = params[:fat_goal]
+
+    # self.fiber_goal = self.calorie_goal / 100
+    # self.sugar_goal = self.calorie_goal / 30
+
+  end
+
+  # def validate_macros(params)
+  #
+  #   validates :carb_goal, presence: true
+  #   validates :protein_goal, presence: true
+  #   validates :fat_goal, presence: true
+  #
+  #   validates_numericality_of :carb_goal, greater_than_or_equal_to: 0
+  #   validates_numericality_of :protein_goal, greater_than_or_equal_to: 0
+  #   validates_numericality_of :fat_goal, greater_than_or_equal_to: 0
+  #
+  # end
 
   def get_activity_level
 

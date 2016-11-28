@@ -27,9 +27,9 @@ gem 'bcrypt', '~> 3.1.11'
 
 gem 'bootstrap-select-rails'
 
-group :assets do
-  gem 'less-rails-bootstrap'
-end
+# group :assets do
+#   gem 'less-rails-bootstrap'
+# end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

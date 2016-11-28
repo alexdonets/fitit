@@ -24,6 +24,28 @@ class UsersController < ApplicationController
     @settings = true
   end
 
+  def edit_macros
+
+  end
+
+  def updt_macros
+    @user = current_user
+    @user.manual_macros(user_params)
+
+    respond_to do |format|
+
+      if @user.save
+
+        format.html { redirect_to @user}
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { redirect_to edit_user_path, notice: 'Update unsuccessful' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   # POST /users
   # POST /users.json
   def create
@@ -67,6 +89,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    current_user.entries.delete_all
     session[:user_id] = nil
     @user.destroy
     respond_to do |format|

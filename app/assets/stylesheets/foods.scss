@@ -4,19 +4,167 @@
 
 .foods-content {
   margin-left: 50px;
-  margin-top: 70px;
+  margin-top: 80px;
   text-align: left;
 }
 
-.side-menu {
+.foods-content .side-menu {
   padding: 0;
   width: 23%;
   float: left;
-  margin-right: 50px;
+  margin-right: 5%;
+  background: none;
+  box-shadow: none;
 }
 
-.main-form {
+.foods-content .main-form {
   width: 72%;
   float: right;
-  padding: 20px 40px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.foods-content .main-form .main-title {
+  position: absolute;
+  margin-left: -28px;
+  margin-top: -63px;
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 40px;
+}
+
+.foods-content .main-form div {
+  display: none;
+}
+
+.foods-content .main-form div.current {
+  // display: inline  -block;
+}
+
+.side-menu .food-groups {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.side-menu li {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  background: white;
+  // transition: background-color 0.2s;
+  color: inherit;
+  padding: 16px;
+  font-family: fantasy;
+}
+
+.side-menu li:not(:last-child) {
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.side-menu li:hover {
+  background: #ecf0f1;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.side-menu li.active {
+  background: #ecf0f1;
+}
+
+.foods {
+  width: 100%;
+  padding: 0;
+}
+
+.foods li.group {
+  display: inline-block;
+  width: 500px;
+  text-decoration: none;
+  color: inherit;
+  height: 38px;
+  margin: 5px;
+  padding: 0;
+  border: 1px solid #bdc3c7;
+  font-family: fantasy;
+}
+
+.foods .group .food-field {
+  display: block;
+  margin: 0;
+  height: 100%;
+  float: left;
+  width: calc( 100% - 125px);
+  padding: 13px 5px;
+  font-size: 20px;
+  border: none;
+  overflow: hidden;
+}
+
+.foods .group .food-field:hover {
+  background: #ecf0f1;
+  cursor: pointer;
+}
+
+.foods .group .food-field .small {
+  font-size: 14px;
+}
+
+.foods .group .input-amount {
+  height: 100%;
+  width: 55px;
+  float: left;
+  margin: 0;
+  border: none;
+  border-left: 1px solid #bdc3c7;
+  border-right: 1px solid #bdc3c7;
+  font-size: 14px;
+  padding: 4px;
+}
+
+.foods .group .add-btn {
+  height: 100%;
+  width: 70px;
+  float: left;
+  margin: 0;
+  border: none;
+  background: #2ecc71;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.foods .group .nutrition {
+  float: right;
+}
+
+.foods .group .nutrition .macros{
+  font-size: 12px;
+  float: right;
+  font-family: fantasy;
+  padding: 0;
+  margin-top: -8px;
+  margin-left: 20px;
+}
+
+.foods .group .nutrition .macros-table td{
+  font-family: fantasy;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.foods .group .nutrition .macros-table td:first-child {
+  text-align: center;
+  padding-left: 0;
+}
+
+.foods .group .nutrition .macros span{
+  display: block;
+  margin-top: -7px;
+  padding: 0;
+  text-align: right;
 }

@@ -21,9 +21,21 @@ Rails.application.routes.draw do
 
   get "signup" => "users#new", :as => "signup"
 
+  get "edit_macros" => "users#edit_macros", :as => "edit_macros"
+
+  get "edit_entry" => "entries#edit", :as => "edit_entry"
+
+  patch "update_macros" => "users#updt_macros", :as => "update_macros"
+
+  patch "update_entry" => "entries#update", :as => "update_entry"
+
   post "create_entry/:food_id" => "entries#create", :as => "create_entry"
   get "entries" => "entries#index", :as => "diary"
   get "new_entry/:food_id" => "entries#new", :as => "new_entry"
+
+  delete "clear_day/" => "entries#clear_day", :as => "clear_day"
+  delete "clear_week/" => "entries#clear_week", :as => "clear_week"
+  # get "foods" => "foods#index", :as => "foodlist"
 
   #get "users/:id/edit" => "users#edit", :as => "edit"
 
@@ -41,6 +53,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   #root 'users#index'
   root :to => 'entries#index'#'pages#homepage'
+
+  # root :to => "foods#index", :id => 3
 
   get "app/views/users/profile.html.erb", to: "users#profile", :as =>  "profile"
 

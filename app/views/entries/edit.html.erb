@@ -1,0 +1,29 @@
+
+
+<div class="edit_entry">
+
+</div>
+
+  <div class="change-amount-modal">
+    <div class="change-amount-content">
+      <p class="modal-title">Change amount</p>
+      <%= form_for(@entry, :url => :update_entry) do |f| %>
+
+        <%= f.hidden_field :id, :value => @entry.id %>
+        <%= f.hidden_field :day, :value => @entry.day %>
+        <div class="field">
+          <%= f.label :amount, "Amount:" %>
+          <%= f.number_field :amount %>
+        </div>
+
+        <div class="actions">
+          <div class="button-set">
+            <p><%= f.submit "Update", :class => "button-green update-button" %>
+              <a href="" class="button-red cancel-button" id="close-change-amount">Cancel</a></p>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,12 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( csshake.css )
 
+Rails.application.config.assets.precompile += %w( foodscript.js )
+
+Rails.application.config.assets.precompile += %w( diaryscript.js )
+
+Rails.application.config.assets.precompile += %w( user_actions.js )
+
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

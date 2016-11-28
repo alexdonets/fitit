@@ -1,7 +1,5 @@
 
-/*
- *= require twitter/bootstrap
-*/
+
 
 /*
  *= require_tree
@@ -19,7 +17,39 @@ body {
   height: 100vh;
   text-align: center;
   background-color: #16a085;
+
 }
+
+/* BUTTONS */
+
+.button-green {
+  margin-top: 15px;
+  background: #2ecc71;
+  border: 0;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.button-blue {
+
+
+}
+
+.button-red {
+  background: #e74c3c;
+  color: #ecf0f1;
+
+}
+
+.button-red:hover {
+  background: #e74c3c;
+  color: #ecf0f1;
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
 
 .base-form {
   position: relative;
@@ -27,8 +57,8 @@ body {
   background: white;
   font-family: fantasy;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  height: 500px;
-  padding: 50px;
+  padding: 0;
+  margin: 0;
 }
 
 .login-form, .signup-form {
@@ -63,9 +93,6 @@ body {
 }
 
 .login-form .title, .signup-form .title {
-  /*font-family: fantasy;
-  font-size: 30px;
-  margin-bottom: 25px;*/
   color: #16a085;
   font-weight: bold;
   font-family: Arial;
@@ -76,10 +103,10 @@ body {
 .login-form .login-button, .signup-form .signup-button {
   margin-top: 15px;
   width: 35%;
-  background: #2ecc71;
+  /*background: #2ecc71;
   border-bottom: 3px solid #27ae60;
   padding: 7px;
-  text-align: center;
+  text-align: center;*/
 }
 
 .nav, .navbar-nav, .nav-left, li.active {
@@ -90,10 +117,12 @@ body {
   color: white;
   font-size: 35px;
   font-family: "Lucida Sans Unicode";
+
 }
 
 .navbar.navbar-inverse.navbar-fixed-top li a {
   color: #bdc3c7;
+
 }
 
 .navbar.navbar-inverse.navbar-fixed-top li a:hover {
@@ -111,10 +140,6 @@ body {
 .navbar-fixed-top {
   color: white;
 }
-
-/*.login, .signup, .settings {
-  background-color: #16a085;
-}*/
 
 .fitit {
   font-family: fantasy;
