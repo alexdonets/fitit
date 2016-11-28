@@ -62,22 +62,12 @@
                     </tr>
                     <% current_user.entries.where(day: "#{d}", meal: "#{m}").find_each do |entry| %>
 
-
-                      <!-- MODAL CHANGE AMOUNT -->
-
-
-                      <!-- END -->
-
-
-
-
-
-
-
+                      <% @entry = entry %>
 
                       <tr>
                         <td>
-                          <%= @foods.find_by_id(entry.food_id).name %>
+                          <% name = @foods.find_by_id(entry.food_id).name %>
+                          <%= link_to name, edit_entry_path(@entry), :class => "edit-entry-btn"%>
                         </td>
                         <td>
                           <%= "#{entry.amount == entry.amount.round ? entry.amount.round : entry.amount}"%><span class="small">x</span><%="#{@foods.find_by_id(entry.food_id).portion}"%>
@@ -99,9 +89,6 @@
                         </td>
                         <td>
                           <%= (entry.amount * @foods.find_by_id(entry.food_id).sugar).round%>
-                        </td>
-                        <td>
-                          <%= link_to "amount", edit_entry_url(entry), :class => "edit-entry-btn"%>
                         </td>
                         <td>
                           <%= link_to 'Remove', remove_entry_url(entry), method: :delete, data: { confirm: 'Are you sure?' } %>

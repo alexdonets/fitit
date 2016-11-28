@@ -132,6 +132,17 @@
   min-width: 60px;
 }
 
+.diary-content .main-form tr td>a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.diary-content .main-form tr td>a:hover {
+  color: inherit;
+
+}
+
+
 .diary-content .main-form tr.top {
   background: #52B3D9;
 }
@@ -157,27 +168,23 @@
 }
 
 
-
-.edit_entry .change-amount-modal {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-color: rgba(0,0,0,0.8);
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  overflow: auto;
+.edit-entry {
+  // margin: 100px;
 }
 
-.edit_entry .change-amount-modal .change-amount-content{
+.edit-entry>.edit-entry-content {
   background: white;
   margin: 150px auto;
-  padding: 40px;
+  padding: 50px 40px;
   width: 400px;
+  height: 400px;
 }
 
-.edit_entry .change-amount-modal .change-amount-content #close-change-amount {
+.edit-entry .actions {
+  margin-top: 30px;
+}
+
+.edit-entry .cancel-button {
   float: right;
   width: 90px;
   color: inherit;
@@ -188,32 +195,37 @@
   text-align: center;
 }
 
-.edit_entry  .change-amount-modal .change-amount-content #close-change-amount:hover {
+.edit-entry .update-button {
+  float: left;
+}
+
+.edit-entry  .cancel-button:hover {
   text-decoration: none;
   color: #ecf0f1;
 }
 
-.edit_entry  .change-amount-modal .change-amount-content .modal-title {
+.edit-entry .title {
   color: #16a085;
   font-weight: bold;
   font-family: Arial;
   font-size: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 70px;
 }
 
-.edit_entry  .change-amount-modal .change-amount-content td {
-  width: 65px;
-  border: 1px solid #bdc3c7;
+.edit-entry td {
+  // width: 65px;
+  // border: 1px solid #bdc3c7;
   padding: 8px;
   border: none;
   margin: 5px 0;
   margin-right: 5px;
 }
 
-.edit_entry .change-amount-modal .change-amount-content table {
+.edit-entry table {
   display: block;
 }
 
-.edit_entry  .change-amount-modal .change-amount-content table input {
+.edit-entry .field>input {
   padding: 4px;
+  margin: 8px;
 }
