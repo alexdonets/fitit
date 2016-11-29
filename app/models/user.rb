@@ -194,46 +194,18 @@ class User < ActiveRecord::Base
 
   def manual_macros(params)
 
-    # if validate_macros(params)
-    #   self.calorie_goal = params[:calorie_goal]
-    #   self.carb_goal = params[:carb_goal]
-    #   self.protein_goal = params[:protein_goal]
-    #   self.fat_goal = params[:fat_goal]
-    #   self.fiber_goal = current_user.calorie_goal / 100
-    #   self.sugar_goal = current_user.calorie_goal / 30
-    # else
-    #   return false
-    #
-    # end
-
-    self.calorie_goal = params[:calorie_goal]
     self.carb_goal = params[:carb_goal]
     self.protein_goal = params[:protein_goal]
     self.fat_goal = params[:fat_goal]
+
+    self.calorie_goal = self.carb_goal*4 + self.protein_goal*4 + self.fat_goal*9
+
     self.fiber_goal = self.calorie_goal / 100
     self.sugar_goal = self.calorie_goal / 30
 
-    # self.calorie_goal = params[:calorie_goal]
-    # self.carb_goal = params[:carb_goal]
-    # self.protein_goal = params[:protein_goal]
-    # self.fat_goal = params[:fat_goal]
-
-    # self.fiber_goal = self.calorie_goal / 100
-    # self.sugar_goal = self.calorie_goal / 30
 
   end
 
-  # def validate_macros(params)
-  #
-  #   validates :carb_goal, presence: true
-  #   validates :protein_goal, presence: true
-  #   validates :fat_goal, presence: true
-  #
-  #   validates_numericality_of :carb_goal, greater_than_or_equal_to: 0
-  #   validates_numericality_of :protein_goal, greater_than_or_equal_to: 0
-  #   validates_numericality_of :fat_goal, greater_than_or_equal_to: 0
-  #
-  # end
 
   def get_activity_level
 

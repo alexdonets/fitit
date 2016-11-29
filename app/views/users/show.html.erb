@@ -13,26 +13,26 @@
 
           <tr>
             <div class="field">
-              <td><%= f.label :calorie_goal, "Calories:" %></td>
-              <td><%= f.number_field :calorie_goal %></td>
+              <td><%#= f.label :calorie_goal, "Calories:" %>Calories:</td>
+              <td><%#= f.number_field :calorie_goal, :id => "calories", :disabled => true %><span id="calories"><%=current_user.calorie_goal%></span></td>
             </div>
           </tr>
           <tr>
             <div class="field">
               <td><%= f.label :carb_goal, "Carbs:" %></td>
-              <td><%= f.number_field :carb_goal %></td>
+              <td><%= f.number_field :carb_goal, :id => "carbs" %></td>
             </div>
           </tr>
           <tr>
             <div class="field">
               <td><%= f.label :protein_goal, "Protein:" %></td>
-              <td><%= f.number_field :protein_goal %></td>
+              <td><%= f.number_field :protein_goal, :id => "protein" %></td>
             </div>
           </tr>
           <tr>
             <div class="field">
               <td><%= f.label :fat_goal, "Fat:" %></td>
-              <td><%= f.number_field :fat_goal%> </td>
+              <td><%= f.number_field :fat_goal, :id => "fat"%> </td>
             </div>
           </tr>
 

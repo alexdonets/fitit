@@ -270,3 +270,11 @@ select {
 .profile-form .modal-macros .macros-content table input {
   padding: 4px;
 }
+
+.profile-form .modal-macros #calories {
+  border: none;
+  background: white;
+  margin-top: -5px;
+  font-weight: bold;
+  font-size: 14px;
+}

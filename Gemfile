@@ -27,6 +27,8 @@ gem 'bcrypt', '~> 3.1.11'
 
 gem 'bootstrap-select-rails'
 
+# gem 'jquery-turbolinks'
+
 # group :assets do
 #   gem 'less-rails-bootstrap'
 # end

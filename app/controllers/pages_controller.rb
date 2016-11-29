@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   def homepage
     if current_user
-      redirect_to homepage_url
+      redirect_to diary_url
     else
       redirect_to login_url
     end

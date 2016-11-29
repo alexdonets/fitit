@@ -26,6 +26,10 @@ body {
   text-align: center;
 }
 
+.button-green:hover {
+
+}
+
 .button-blue {
 
 
@@ -34,7 +38,15 @@ body {
 .button-red {
   background: #e74c3c;
   color: #ecf0f1;
+  margin-top: 15px;
+  border: 0;
+  padding: 10px 20px;
+  text-align: center;
+}
 
+.button-red:hover {
+  color: #ecf0f1;
+  text-decoration: none;
 }
 
 .button-red:hover {

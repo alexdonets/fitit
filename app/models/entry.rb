@@ -21,7 +21,7 @@ class Entry < ActiveRecord::Base
   validates :food_id, presence: true
 
   def update_amount(amount)
-    self.amount = amount
+    self.amount = amount.to_f
   end
 
 
