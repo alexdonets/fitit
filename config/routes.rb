@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get "edit_macros" => "users#edit_macros", :as => "edit_macros"
 
+  get "about" => "pages#about", :as => "about"
+
   get "entry/:id/edit" => "entries#edit", :as => "edit_entry"
 
   patch "update_macros" => "users#updt_macros", :as => "update_macros"

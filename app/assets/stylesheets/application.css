@@ -3,8 +3,6 @@
  *= require_tree
 */
 
-//= require bootstrap-select
-
 
 body {
   padding-top: 60px;
@@ -120,6 +118,7 @@ body {
   color: #bdc3c7;
   font-size: 35px;
   font-family: "Lucida Sans Unicode";
+  margin: auto 10px;
 
 }
 
@@ -140,6 +139,7 @@ body {
 
 .navbar-inverse {
   background: #141414;
+
 }
 
 .navbar-inverse li {
@@ -158,4 +158,34 @@ body {
 
 .nav-right {
   float: right;
+}
+
+.about-content .about {
+  margin-top: 100px;
+  width: 400px;
+  height: 450px;
+  padding: 50px;
+  padding-top: 120px;
+  text-align: center;
+}
+
+.about-content .about img {
+  width: 400px;
+  height: auto;
+  margin-top: -176px;
+  margin-left: -50px;
+}
+
+.about-content .about table {
+  position: absolute;
+  bottom: 50px;
+  margin: auto;
+}
+
+.about-content .about td {
+  font-family: fantasy;
+  font-size: 16px;
+  padding: 5px;
+  text-align: center;
+  width: 100px;
 }

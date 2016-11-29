@@ -6,6 +6,9 @@ class FoodsController < ApplicationController
   # GET /foods.json
   def index
     @foods = Food.order(:name)
+
+    # @foods = @foods.sort_by &:name
+    # @users.sort! { |a,b| a.name.downcase <=> b.name.downcase }
     @food_categories = Food::CATEGORIES.keys.sort
     # @current_category ||= params(:category)
     day_selected = params[:day_selected]
