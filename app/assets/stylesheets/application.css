@@ -3,8 +3,6 @@
  *= require_tree
 */
 
-
-
 //= require bootstrap-select
 
 
@@ -111,21 +109,24 @@ body {
 .login-form .login-button, .signup-form .signup-button {
   margin-top: 15px;
   width: 35%;
-  /*background: #2ecc71;
-  border-bottom: 3px solid #27ae60;
-  padding: 7px;
-  text-align: center;*/
+
 }
 
 .nav, .navbar-nav, .nav-left, li.active {
   background: black;
 }
 
-.logo {
-  color: white;
+.navbar-header>.logo {
+  color: #bdc3c7;
   font-size: 35px;
   font-family: "Lucida Sans Unicode";
 
+}
+
+.navbar-header>.logo:hover {
+  color: white;
+  text-decoration: none;
+  background: inherit;
 }
 
 .navbar.navbar-inverse.navbar-fixed-top li a {

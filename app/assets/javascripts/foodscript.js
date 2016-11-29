@@ -77,7 +77,8 @@ $(function(){
   });
 
   $closeBtn.click(function(){
-  $(".food-modal").hide();
+    alert("Alert");
+    $(".food-modal").hide();
     //alert(JSON.stringify($(this).parent().parent().parent().parent().find(".food-modal")));
     event.preventDefault();
   });

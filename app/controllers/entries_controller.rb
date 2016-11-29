@@ -7,8 +7,23 @@ class EntriesController < ApplicationController
   def index
     @foods = Food.all
 
-    @day_total = 0
-    @meal_total = 0
+    @day_total_cals = 0
+    @meal_total_cals = 0
+
+    @day_total_carbs = 0
+    @meal_total_carbs = 0
+
+    @day_total_prot = 0
+    @meal_total_prot = 0
+
+    @day_total_fat = 0
+    @meal_total_fat = 0
+
+    @day_total_fiber = 0
+    @meal_total_fiber = 0
+
+    @day_total_sugar = 0
+    @meal_total_sugar = 0
   end
 
   def new
@@ -71,16 +86,18 @@ class EntriesController < ApplicationController
   def update
 
     @entry = Entry.find(entry_params[:id])
+    @entry.update_amount(entry_params[:amount])
+
     respond_to do |format|
 
-      if @entry.update_amount(entry_params[:amount])
+      if @entry.save
 
-        @entry.save
+
 
         format.html { redirect_to diary_url(:curr_day => entry_params[:day])}#, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @entry }
       else
-        format.html { render :new }
+        format.html { redirect_to edit_entry_path(@entry)}
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end

@@ -129,7 +129,7 @@
   border-right: 1px solid white;
   border-left: 1px solid white;
   text-align: center;
-  min-width: 60px;
+  min-width: 70px;
 }
 
 .diary-content .main-form tr td>a {
@@ -140,6 +140,10 @@
 .diary-content .main-form tr td>a:hover {
   color: inherit;
 
+}
+
+.diary-content .main-form .total td {
+  min-width: 100px;
 }
 
 
@@ -228,4 +232,8 @@
 .edit-entry .field>input {
   padding: 4px;
   margin: 8px;
+}
+
+.diary-content tr.bottom td {
+  font-weight: bold;
 }
