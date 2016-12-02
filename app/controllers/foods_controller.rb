@@ -63,7 +63,7 @@ class FoodsController < ApplicationController
   # DELETE /foods/1
   # DELETE /foods/1.json
   def destroy
-    current_user.entries.where(food_id: "#{@food.id}").delete_all
+    #current_user.entries.where(food_id: "#{@food.id}").delete_all
     @food.destroy
     respond_to do |format|
       format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }

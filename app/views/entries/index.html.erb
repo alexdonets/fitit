@@ -29,7 +29,12 @@
   <div class="base-form main-form">
 
     <% Entry::WEEKDAYS.each do |d| %>
-      <% @day_total = 0 %>
+      <% @day_total_cals = 0 %>
+      <% @day_total_carbs = 0 %>
+      <% @day_total_prot = 0 %>
+      <% @day_total_fat = 0 %>
+      <% @day_total_fiber = 0 %>
+      <% @day_total_sugar = 0 %>
 
         <div class="<%="#{d}-content"%>">
 

@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   #root 'users#index'
-  root :to => 'pages#homepage'
+  root :to => 'pages#about'
 
   # root :to => "foods#index", :id => 3
 

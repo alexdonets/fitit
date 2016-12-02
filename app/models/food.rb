@@ -3,8 +3,6 @@ class Food < ActiveRecord::Base
   has_many :entries
   belongs_to :user
 
-  default_scope { order(name: :asc) }
-
   CATEGORIES = { "Dairy & Eggs" => "Dairy",
                 "Meat & Fish" => "Animal",
                 "Fruits & Vegetables" => "Plant",

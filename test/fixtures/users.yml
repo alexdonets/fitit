@@ -2,7 +2,9 @@
 
 one:
   username: MyString
-  password: MyString
+  email: MyString1
+  password_hash: MyString
+  salt: MyString
   weight: 1.5
   height: 1.5
   age: 1
@@ -17,7 +19,9 @@ one:
 
 two:
   username: MyString
-  password: MyString
+  email: MyString2
+  password_hash: MyString
+  salt: MyString
   weight: 1.5
   height: 1.5
   age: 1

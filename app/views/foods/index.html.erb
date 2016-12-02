@@ -47,7 +47,7 @@
                         <tr>
                         <tr>
                           <td><%= "Category:" %></td>
-                          <td class="name" colspan="3"><%= food.category %></td>
+                          <td class="name" colspan="3"><%= Food::CATEGORIES.key(food.category) %></td>
                         </tr>
                         <tr>
                           <td><%= "Calories:" %></td>
