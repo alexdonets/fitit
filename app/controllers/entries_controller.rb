@@ -5,6 +5,11 @@ class EntriesController < ApplicationController
   before_action :set_entry, only: [:destroy]
 
   def index
+
+    if(!current_user)
+      redirect_to login_path
+    end
+
     @foods = Food.all
 
     @day_total_cals = 0

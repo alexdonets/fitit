@@ -52,3 +52,7 @@ production:
   database: fitit_production
   username: fitit
   password: <%= ENV['FITIT_DATABASE_PASSWORD'] %>
+
+  benchmark:
+  <<: *default
+  database: fitit_production

@@ -5,6 +5,10 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.json
   def index
+
+    if(!current_user)
+      redirect_to login_path
+    end
     @foods = Food.order(:name)
 
     # @foods = @foods.sort_by &:name
@@ -85,7 +89,4 @@ class FoodsController < ApplicationController
                                     :polyunsaturated_fat, :saturated_fat)
     end
 
-    # def diary_params
-    #   params.require(:food).permit(:day_selected, :meal_selected)
-    # end
 end

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :set_day_and_meal, :set_arrays 
+  before_filter :set_day_and_meal, :set_arrays
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

@@ -53,8 +53,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'users#index'
-  root :to => 'pages#about'
+
+  root :to => 'users#show', :id => 1
 
   # root :to => "foods#index", :id => 3
 

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class FoodsControllerTest < ActionController::TestCase
   setup do
-    @food = Food.new(name: "some name", portion: "100g", calories: 500, carb: 20, protein: 20, fat: 50, fiber: 5, sugar: 5, added_by: 50)
+    @food = foods(:one)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class FoodsControllerTest < ActionController::TestCase
 
   test "should create food" do
     assert_difference('Food.count') do
-      post :create, food: { added_by: @food.added_by, calories: @food.calories, carb: @food.carb, category: @food.category, fat: @food.fat, fiber: @food.fiber, name: @food.name, portion: @food.portion, protein: @food.protein, sugar: @food.sugar }
+      post :create, food: { calories: @food.calories, carb: @food.carb, category: @food.category, fat: @food.fat, fiber: @food.fiber, name: @food.name, portion: @food.portion, protein: @food.protein, sugar: @food.sugar }
     end
 
     assert_redirected_to food_path(assigns(:food))
