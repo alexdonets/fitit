@@ -1,31 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  password: MyString
-  weight: 1.5
-  height: 1.5
-  age: 1
-  activity_level: 1
-  goal: 1
-  calorie_goal: 1
-  fat_goal: 1
-  carb_goal: 1
-  protein_goal: 1
-  fiber_goal: 1
-  sugar_goal: 1
+  username: "Unique124"
+  email: "myeqwwqil124@mail.com"
+  password_hash: "sdgu45bwgjwek"
+  salt: "ehrgiuh54"
+  weight: 72
+  height: 180
+  age: 24
 
 two:
-  username: MyString
-  password: MyString
-  weight: 1.5
-  height: 1.5
-  age: 1
-  activity_level: 1
-  goal: 1
-  calorie_goal: 1
-  fat_goal: 1
-  carb_goal: 1
-  protein_goal: 1
-  fiber_goal: 1
-  sugar_goal: 1
+  username: "Anothername"
+  email: "myemail123@mail.com"
+  password_hash: "sdgu45bwgjwek"
+  salt: "ehrgiuh54"

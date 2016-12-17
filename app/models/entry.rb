@@ -3,19 +3,26 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   belongs_to :food
 
-  DAY_OPTIONS = %w{MON TUE WED THU FRI SAT SUN}
-  MEAL_OPTIONS = %w{BREAKFAST LUNCH DINNER SNACKS}
+  WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  MEALS = ["Breakfast", "Lunch", "Dinner", "Snacks"]
 
   validates :amount, presence: true
 
+  validates_numericality_of :amount, greater_than_or_equal_to: 0
+
   validates :day, presence: true,
-            :inclusion => { :in => DAY_OPTIONS }
+            :inclusion => { :in => WEEKDAYS }
 
   validates :meal, presence: true,
-            :inclusion => { :in => MEAL_OPTIONS }
+            :inclusion => { :in => MEALS }
 
-  validates :user, presence: true
+  validates :user_id, presence: true
 
-  validates :food, presence: true
+  validates :food_id, presence: true
+
+  def update_amount(amount)
+    self.amount = amount.to_f
+  end
+
 
 end

@@ -1,5 +1,34 @@
-<h1>New User</h1>
+<%#<h1>New User</h1>%>
 
-<%= render 'form' %>
+<%#= render 'form' %>
 
-<%= link_to 'Back', users_path %>
+
+<div class="signup-form">
+
+  <h1 class="title">Sign Up:</h1>
+
+  <%= form_for(@user) do |f| %>
+
+
+    <div class="field">
+      <%= f.label :username %><br>
+      <%= f.text_field :username, placeholder: "Enter your username" %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email, placeholder: "example@mail.com" %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, placeholder: "Password" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmationn %><br>
+      <%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Sign Up", :class => "signup-button button-green"  %>
+    </div>
+  <% end %>
+
+</div>

@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: fititadmin
-  password: fititpass
+  username: root
+  password: lovemufc
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -52,3 +52,7 @@ production:
   database: fitit_production
   username: fitit
   password: <%= ENV['FITIT_DATABASE_PASSWORD'] %>
+
+  benchmark:
+  <<: *default
+  database: fitit_production

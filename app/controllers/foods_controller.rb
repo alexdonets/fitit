@@ -1,10 +1,22 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize, only: [:create, :delete]
 
   # GET /foods
   # GET /foods.json
   def index
-    @foods = Food.all
+
+    if(!current_user)
+      redirect_to login_path
+    end
+    @foods = Food.order(:name)
+
+    # @foods = @foods.sort_by &:name
+    # @users.sort! { |a,b| a.name.downcase <=> b.name.downcase }
+    @food_categories = Food::CATEGORIES.keys.sort
+    # @current_category ||= params(:category)
+    day_selected = params[:day_selected]
+    meal_selected = params[:meal_selected]
   end
 
   # GET /foods/1
@@ -19,6 +31,7 @@ class FoodsController < ApplicationController
 
   # GET /foods/1/edit
   def edit
+
   end
 
   # POST /foods
@@ -28,7 +41,7 @@ class FoodsController < ApplicationController
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to @food, notice: 'Food was successfully created.' }
+        format.html { redirect_to foods_url, notice: 'Food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
       else
         format.html { render :new }
@@ -42,7 +55,7 @@ class FoodsController < ApplicationController
   def update
     respond_to do |format|
       if @food.update(food_params)
-        format.html { redirect_to @food, notice: 'Food was successfully updated.' }
+        format.html { redirect_to foods_url, notice: 'Food was successfully updated.' }
         format.json { render :show, status: :ok, location: @food }
       else
         format.html { render :edit }
@@ -54,6 +67,7 @@ class FoodsController < ApplicationController
   # DELETE /foods/1
   # DELETE /foods/1.json
   def destroy
+    #current_user.entries.where(food_id: "#{@food.id}").delete_all
     @food.destroy
     respond_to do |format|
       format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
@@ -69,6 +83,10 @@ class FoodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_params
-      params.require(:food).permit(:name, :portion, :calories, :fat, :carb, :protein, :fiber, :sugar, :category, :added_by)
+      params.require(:food).permit(:name, :portion, :calories, :fat, :carb, :protein,
+                                    :fiber, :sugar, :category, :added_by, :cholesterol,
+                                    :potassium, :sodium, :trans_fat, :monounsaturated_fat,
+                                    :polyunsaturated_fat, :saturated_fat)
     end
+
 end

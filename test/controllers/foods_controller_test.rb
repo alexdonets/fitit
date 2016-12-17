@@ -2,7 +2,7 @@ require 'test_helper'
 
 class FoodsControllerTest < ActionController::TestCase
   setup do
-    @food = foods(:one)
+    @food = Food.new(name: "some name", portion: "100g", calories: 500, carb: 20, protein: 20, fat: 50, fiber: 5, sugar: 5, added_by: 50)
   end
 
   test "should get index" do

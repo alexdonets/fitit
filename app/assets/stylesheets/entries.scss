@@ -1,3 +1,239 @@
 // Place all the styles related to the Entries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.diary-content {
+  margin-left: 50px;
+  margin-top: 80px;
+  text-align: left;
+}
+
+.diary-content .side-menu {
+  padding: 0;
+  width: 23%;
+  float: left;
+  margin-right: 5%;
+  background: none;
+  box-shadow: none;
+}
+
+.diary-content .main-form {
+  width: 72%;
+  float: right;
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  font-family: fantasy;
+}
+
+.diary-content .main-form>div {
+  display: none;
+}
+
+.diary-content .side-menu .weekdays {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.diary-content .main-form .main-title {
+  position: absolute;
+  margin-left: -38px;
+  margin-top: -63px;
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 40px;
+}
+
+.diary-content .side-menu li {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  background: white;
+  font-family: fantasy;
+  height: inherit;
+  color: inherit;
+  padding: 16px;
+  // transition: background-color 0.5s;
+}
+
+.diary-content .side-menu li:not(:last-child) {
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.diary-content .side-menu li:hover {
+  background: #ecf0f1;
+  cursor: pointer;
+}
+
+.diary-content .side-menu li a:hover {
+  background: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.diary-content .side-menu li.active {
+  background: #ecf0f1;
+}
+
+//start of right panel
+
+.diary-content .main-form .meal-panel {
+  display: block;
+  margin-bottom: 10px;
+}
+.diary-content .main-form .panel-header {
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+.diary-content .main-form .panel-content {
+  padding: 7px 5px;
+  font-family: 'Colibri';
+}
+
+.diary-content .main-form h2 {
+  text-align: left;
+  margin: 0;
+  color: #3399ff;
+  display: inline-block;
+  border-bottom: 4px solid #3399ff;
+  font-family: 'Colibri';
+}
+
+.diary-content .main-form .add-button {
+  display: block;
+  margin-top: 15px;
+  width: 60px;
+  background: #2ecc71;
+  border: 0;
+  padding: 9px 5px;
+  text-align: center;
+  color: inherit;
+}
+
+.diary-content .main-form .add-button:hover {
+  text-decoration: none;
+}
+
+.diary-content .main-form tr {
+  border-bottom: 1px solid white;
+  background: #E4F1FE;
+}
+
+.diary-content .main-form tr>td {
+  padding: 5px 15px;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  text-align: center;
+  min-width: 70px;
+}
+
+.diary-content .main-form tr td>a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.diary-content .main-form tr td>a:hover {
+  color: inherit;
+
+}
+
+.diary-content .main-form .total td {
+  min-width: 100px;
+}
+
+
+.diary-content .main-form tr.top {
+  background: #52B3D9;
+}
+
+.diary-content .main-form td>a:hover {
+  background: none;
+  color: black;
+}
+
+.diary-content .main-form .clear-btn {
+  font-size: 15px;
+  float: right;
+  margin-top: -10px;
+  margin-left: 10px;
+  background: #e74c3c;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.diary-content .main-form .clear-btn:hover {
+  text-decoration: none;
+}
+
+
+.edit-entry {
+  // margin: 100px;
+}
+
+.edit-entry>.edit-entry-content {
+  background: white;
+  margin: 150px auto;
+  padding: 50px 40px;
+  width: 400px;
+  height: 400px;
+}
+
+.edit-entry .actions {
+  margin-top: 30px;
+}
+
+.edit-entry .cancel-button {
+  float: right;
+  width: 90px;
+  color: inherit;
+  margin-top: 15px;
+  background: #e74c3c;
+  color: #ecf0f1;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.edit-entry .update-button {
+  float: left;
+}
+
+.edit-entry  .cancel-button:hover {
+  text-decoration: none;
+  color: #ecf0f1;
+}
+
+.edit-entry .title {
+  color: #16a085;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 40px;
+  margin-bottom: 70px;
+}
+
+.edit-entry td {
+  // width: 65px;
+  // border: 1px solid #bdc3c7;
+  padding: 8px;
+  border: none;
+  margin: 5px 0;
+  margin-right: 5px;
+}
+
+.edit-entry table {
+  display: block;
+}
+
+.edit-entry .field>input {
+  padding: 4px;
+  margin: 8px;
+}
+
+.diary-content tr.bottom td {
+  font-weight: bold;
+}

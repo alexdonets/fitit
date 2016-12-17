@@ -1,0 +1,237 @@
+<!-- <p id="notice"><%#= notice %></p> -->
+
+<div class="diary-content row">
+
+
+  <div class="base-form side-menu">
+    <ul class="weekdays">
+
+      <% Entry::WEEKDAYS.each do |day| %>
+
+        <% if params[:curr_day] %>
+          <% if day == params[:curr_day] %>
+            <li class="<%="#{day}"%> active" data-content=".<%= "#{day}-content"%>">  <%="#{day}"%>  </li>
+          <% else %>
+            <li class="<%="#{day}"%>" data-content=".<%= "#{day}-content"%>">  <%="#{day}"%>  </li>
+          <% end %>
+        <% else %>
+          <% if day == @current_weekday %>
+            <li class="<%="#{day}"%> active" data-content=".<%= "#{day}-content"%>">  <%="#{day}"%>  </li>
+          <% else %>
+            <li class="<%="#{day}"%>" data-content=".<%= "#{day}-content"%>">  <%="#{day}"%>  </li>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </ul>
+  </div>
+
+  <div class="base-form main-form">
+
+    <% Entry::WEEKDAYS.each do |d| %>
+      <% @day_total_cals = 0 %>
+      <% @day_total_carbs = 0 %>
+      <% @day_total_prot = 0 %>
+      <% @day_total_fat = 0 %>
+      <% @day_total_fiber = 0 %>
+      <% @day_total_sugar = 0 %>
+
+        <div class="<%="#{d}-content"%>">
+
+          <p class="main-title"><%= d  %></p>
+
+          <%= link_to "Clear week", clear_week_url, method: :delete, data: { confirm: 'Are you sure?' }, :class => "clear-btn" %>
+          <%= link_to "Clear day", clear_day_url(:day => d), method: :delete, data: { confirm: 'Are you sure?' }, :class => "clear-btn" %>
+
+          <% Entry::MEALS.each do |m| %>
+
+
+            <% @meal_total_cals = 0 %>
+            <% @meal_total_carbs = 0 %>
+            <% @meal_total_prot = 0 %>
+            <% @meal_total_fat = 0 %>
+            <% @meal_total_fiber = 0 %>
+            <% @meal_total_sugar = 0 %>
+
+            <div class="meal-panel">
+              <div class="panel-header">
+                <h2 class="meal-title"><%= m %></h2>
+              </div>
+              <div class="panel-content" >
+                <div id="meal-data">
+                  <table class="entry-table">
+                    <tr class="top">
+                      <td>Name</td>
+                      <td>Amount</td>
+                      <td>Calories</td>
+                      <td>Carbs</td>
+                      <td>Protein</td>
+                      <td>Fats</td>
+                      <td>Fiber</td>
+                      <td>Sugar</td>
+                      <td></td>
+                    </tr>
+                    <% current_user.entries.where(day: "#{d}", meal: "#{m}").find_each do |entry| %>
+
+                      <% @entry = entry %>
+
+                      <tr>
+                        <td>
+                          <% name = @foods.find_by_id(entry.food_id).name %>
+                          <%= link_to name, edit_entry_path(@entry), :class => "edit-entry-btn"%>
+                        </td>
+                        <td>
+                          <%= "#{entry.amount == entry.amount.round ? entry.amount.round : entry.amount}"%><span class="small">x</span><%="#{@foods.find_by_id(entry.food_id).portion}"%>
+                        </td>
+                        <td>
+                          <%= (entry.amount * @foods.find_by_id(entry.food_id).calories).round%>
+                          <% @meal_total_cals += (entry.amount * @foods.find_by_id(entry.food_id).calories).round%>
+                        </td>
+                        <td>
+                          <%= (entry.amount * @foods.find_by_id(entry.food_id).carb).round%>
+                          <% @meal_total_carbs += (entry.amount * @foods.find_by_id(entry.food_id).carb).round%>
+                        </td>
+                        <td>
+                          <%= (entry.amount * @foods.find_by_id(entry.food_id).protein).round%>
+                          <% @meal_total_prot += (entry.amount * @foods.find_by_id(entry.food_id).protein).round%>
+                        </td>
+                        <td>
+                          <%= (entry.amount * @foods.find_by_id(entry.food_id).fat).round%>
+                          <% @meal_total_fat += (entry.amount * @foods.find_by_id(entry.food_id).fat).round%>
+                        </td>
+                        <td>
+                          <%= (entry.amount * @foods.find_by_id(entry.food_id).fiber).round%>
+                          <% @meal_total_fiber += (entry.amount * @foods.find_by_id(entry.food_id).fiber).round%>
+                        </td>
+                        <td>
+                          <%= (entry.amount * @foods.find_by_id(entry.food_id).sugar).round%>
+                          <% @meal_total_sugar += (entry.amount * @foods.find_by_id(entry.food_id).sugar).round%>
+                        </td>
+                        <td>
+                          <%= link_to 'Remove', remove_entry_url(entry), method: :delete, data: { confirm: 'Are you sure?' } %>
+                        </td>
+
+                      </tr>
+                    <% end %>
+                    <tr class="bottom">
+                      <td colspan="2">Total:</td>
+                      <td><%=@meal_total_cals%></td>
+                      <td><%=@meal_total_carbs%></td>
+                      <td><%=@meal_total_prot%></td>
+                      <td><%=@meal_total_fat%></td>
+                      <td><%=@meal_total_fiber%></td>
+                      <td><%=@meal_total_sugar%></td>
+                      <td></td>
+                    </tr>
+
+                  </table>
+
+                </div>
+
+                <%= link_to "Add", foods_path(:day_selected => d, :meal_selected => m), method: :get, :class => "add-button" %>
+              </div>
+            </div>
+
+            <% @day_total_cals += @meal_total_cals %>
+            <% @day_total_carbs += @meal_total_carbs %>
+            <% @day_total_prot += @meal_total_prot %>
+            <% @day_total_fat += @meal_total_fat %>
+            <% @day_total_fiber += @meal_total_fiber %>
+            <% @day_total_sugar += @meal_total_sugar %>
+
+
+          <% end %>
+          <div class="meal-panel">
+            <div class="panel-header">
+              <h2 class="meal-title">Total</h2>
+            </div>
+            <div class="panel-content" >
+              <div id="meal-data">
+                <table class="entry-table total">
+                  <tr class="top">
+                    <td></td>
+                    <td>Calories</td>
+                    <td>Carbs</td>
+                    <td>Protein</td>
+                    <td>Fats</td>
+                    <td>Fiber</td>
+                    <td>Sugar</td>
+                  </tr>
+                  <tr>
+                    <td>Goal:</td>
+                    <td><%= current_user.calorie_goal %></td>
+                    <td><%= current_user.carb_goal %></td>
+                    <td><%= current_user.protein_goal %></td>
+                    <td><%= current_user.fat_goal %></td>
+                    <td><%= current_user.fiber_goal %></td>
+                    <td><%= current_user.sugar_goal %></td>
+                  </tr>
+                  <tr >
+                    <td>Today:</td>
+                    <td><%= @day_total_cals %></td>
+                    <td><%= @day_total_carbs %></td>
+                    <td><%= @day_total_prot %></td>
+                    <td><%= @day_total_fat %></td>
+                    <td><%= @day_total_fiber %></td>
+                    <td><%= @day_total_sugar %></td>
+                  </tr>
+                  <tr class="bottom">
+                    <td>Rest:</td>
+                    <td><%= current_user.calorie_goal - @day_total_cals %></td>
+                    <td><%= current_user.carb_goal - @day_total_carbs %></td>
+                    <td><%= current_user.protein_goal - @day_total_prot %></td>
+                    <td><%= current_user.fat_goal - @day_total_fat %></td>
+                    <td><%= current_user.fiber_goal - @day_total_fiber %></td>
+                    <td><%= current_user.sugar_goal - @day_total_sugar %></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+
+    <% end %>
+
+  </div>
+</div>
+
+<!-- <script src="<%#= asset_path 'diaryscript.js'%>"></script> -->
+
+
+<!-- <h2>Entries</h2>
+
+<% if !current_user.entries.empty? %>
+  <% @user = current_user %>
+  <% @user.entries.each do |entry| %>
+
+    <p>
+      <strong>ID</strong>
+      <%= entry.id %>
+    </p>
+    <p>
+      <strong>Food</strong>
+      <%= entry.food_id %><br>
+      <%= @foods.find_by_id(entry.food_id).name %>
+    </p>
+    <p>
+      <strong>Amount</strong>
+      <%= entry.amount %>
+    </p>
+    <p>
+      <strong>Day</strong>
+      <%= entry.day %>
+    </p>
+    <p>
+      <strong>Meal</strong>
+      <%= entry.meal %>
+    </p>
+    <p><%= link_to 'Destroy', remove_entry_url(entry), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+  <% end %>
+
+
+<% end %> -->

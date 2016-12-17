@@ -1,6 +1,80 @@
-<h1>Editing Food</h1>
+<div class="edit-food">
 
-<%= render 'form' %>
+  <div class="main-form food-form">
+    <p class="main-title">Edit product</p>
+    <%= form_for(@food) do |f| %>
+      <table>
+        <tr>
+          <td><%= f.label :name, "Name:" %></td>
+          <td class="name" colspan="3"><%= f.text_field :name, placeholder: "Name" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :category, "Category:" %></td>
+          <td class="name" colspan="3"><%= f.select :category, Food::CATEGORIES %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :calories, "Calories:" %></td>
+          <td><%= f.number_field :calories, placeholder: "g" %></td>
 
-<%= link_to 'Show', @food %> |
-<%= link_to 'Back', foods_path %>
+          <td><%= f.label :portion, "Portion:" %></td>
+          <td><%= f.text_field :portion, placeholder: "g/ml" %></td>
+        </tr>
+
+        <tr>
+          <td><%= f.label :fat, "Fat:" %></td>
+          <td><%= f.text_field :fat, placeholder: "g" %></td>
+
+          <td><%= f.label :carb, "Carbs:" %></td>
+          <td><%= f.text_field :carb, placeholder: "g" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :protein, "Protein:" %></td>
+          <td><%= f.text_field :protein, placeholder: "g" %></td>
+
+          <td><%= f.label :fiber, "Fiber:" %></td>
+          <td><%= f.text_field :fiber, placeholder: "g" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :sugar, "Sugar:" %></td>
+          <td><%= f.text_field :sugar, placeholder: "g" %></td>
+          <td><%= f.label :sodium, "Sodium:" %></td>
+          <td><%= f.text_field :sodium, placeholder: "mg" %></td>
+
+        <tr>
+        <tr>
+          <td><%= f.label :cholesterol, "Cholesterol:" %></td>
+          <td><%= f.text_field :cholesterol, placeholder: "mg" %></td>
+          <td><%= f.label :potassium, "Potassium:" %></td>
+          <td><%= f.text_field :potassium, placeholder: "mg" %></td>
+
+        <tr>
+        <tr>
+          <td><%= f.label :saturated_fat, "Saturated fat:" %></td>
+          <td><%= f.text_field :saturated_fat, placeholder: "g" %></td>
+          <td><%= f.label :monounsaturated_fat, "Monounsaturated fat:" %></td>
+          <td><%= f.text_field :monounsaturated_fat, placeholder: "g" %></td>
+
+        <tr>
+        <tr>
+          <td><%= f.label :polyunsaturated_fat, "Polyunsaturated fat:" %></td>
+          <td><%= f.text_field :polyunsaturated_fat, placeholder: "g" %></td>
+          <td><%= f.label :trans_fat, "Trans fat:" %></td>
+          <td><%= f.text_field :trans_fat, placeholder: "g" %></td>
+
+        <tr>
+      </table>
+      <div class="actions">
+        <%= f.submit "Edit", :class => "button-green accept-button"%>
+        <%= link_to "Cancel", foods_path, method: :get,   :class => "button-red cancel-button" %>
+      </div>
+
+    <% end %>
+
+
+  </div>
+
+</div>
+
+
+<%#= link_to 'Show', @food %>
+<%#= link_to 'Back', foods_path %>

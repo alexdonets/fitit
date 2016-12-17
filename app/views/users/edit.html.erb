@@ -1,6 +1,75 @@
-<h1>Editing User</h1>
+<div class="edit-settings">
 
-<%= render 'form' %>
+  <div class="settings-form">
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    <span class="main-title">Settings</span>
+
+    <h2 class="secondary-title">Set Up Your Profile</h2>
+
+    <% @user = current_user %>
+
+    <%= form_for(@user) do |f| %>
+
+      <table>
+
+        <tr>
+          <div class="field">
+            <td><%= f.label :weight, "Weight (kg)" %></td>
+            <td><%= f.number_field :weight %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <td><%= f.label :height, "Height (cm)" %></td>
+            <td><%= f.number_field :height %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <td><%= f.label :age, "Age" %></td>
+            <td><%= f.number_field :age %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <td><%= f.label :bodyfat, "Bodyfat (%)" %></td>
+            <td><%= f.number_field :bodyfat%> (optional)</td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <td><%= f.label :sex %></td>
+            <td><%= f.select :sex, User::SEX, :selected => current_user.sex %></td>
+
+          </div>
+        </tr>
+
+        <tr>
+          <div class="field">
+            <td><%= f.label :activity_level %></td>
+            <td><%= f.select :activity_level, User::ACTIVITY, :selected => current_user.activity_level  %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="field">
+            <td><%= f.label :goal %></td>
+            <td><%= f.select :goal, User::GOAL, :selected => current_user.goal  %></td>
+          </div>
+        </tr>
+      </table>
+
+      <div class="actions">
+        <div class="button-set">
+          <%= f.submit "Update", :class => "button-green update-button" %>
+          <%= link_to "Cancel", user_url(current_user),   :class => "button-red cancel-button" %>
+        </div>
+
+      </div>
+
+
+
+    <% end %>
+
+  </div>
+
+</div>

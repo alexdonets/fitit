@@ -2,13 +2,57 @@
 <html>
 <head>
   <title>Fitit</title>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
-<body>
+  <link rel="stylesheet" href="<%= asset_path 'csshake.css'%>" title="text/css">
 
-<%= yield %>
+</head>
+<body class=" <%= @login ? 'login' : '' %> <%= @signup ? 'signup' : '' %> <%= @settings ? 'settings' : '' %> ">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Fitit", root_url, { :class => "logo"} %>
+      </div>
+      <ul class="nav navbar-nav nav-left">
+        <% if current_user %>
+          <!-- <li><%#= link_to "Fitit", root_url, { :class => "logo"} %></li> -->
+          <!-- <li class="<%= 'active' if current_page?(homepage_url) %>"><%#= link_to "Home", root_url  %></li> -->
+          <li class="<%= 'active' if current_page?(user_path(current_user.id)) %>"><%= link_to "Profile", user_path(current_user.id) %></li>
+          <li class="<%= 'active' if current_page?(diary_url) %>"><%= link_to "Diary", diary_url, method: :get %></li>
+          <li class="<%= 'active' if current_page?(foods_path) %>"><%= link_to "Foods", foods_path, method: :get %></li>
+          <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>"><%= link_to "Settings", edit_user_path(current_user) %></li>
+          <li class="<%= 'active' if current_page?(about_path) %>"><%= link_to "About", about_path %></li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav nav-right">
+        <% if current_user %>
+          <li class="<%= 'active' if current_page?(logout_path) %>"><%= link_to "Log Out", logout_path, {:class => "last"} %></a></li>
+        <% else %>
+          <li class="<%= 'active' if current_page?(login_path) %>"><%= link_to "Log In", login_path %></li>
+          <li class="<%= 'active' if current_page?(signup_path) %>"><%= link_to "Sign Up", signup_path, {:class => "last"} %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  </nav>
+
+  <div class="container">
+
+
+  <%= yield %>
+
+  </div>
 
 </body>
 </html>

@@ -1,109 +1,182 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<div class="profile-form">
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+  <!-- Modal for macros -->
+  <div class="modal-macros">
+    <div class="macros-content">
+      <p class="modal-title">Set macros</p>
+      <% @user = current_user %>
+      <%= form_for(@user, :url => :update_macros) do |f| %>
 
-<p>
-  <strong>Weight:</strong>
-  <%= @user.weight %>
-</p>
+        <table>
 
-<p>
-  <strong>Height:</strong>
-  <%= @user.height %>
-</p>
+          <tr>
+            <div class="field">
+              <td><%#= f.label :calorie_goal, "Calories:" %><strong>Calories:</strong></td>
+              <td><%#= f.number_field :calorie_goal, :id => "calories", :disabled => true %><span id="calories"><%=current_user.calorie_goal%></span></td>
+            </div>
+          </tr>
+          <tr>
+            <div class="field">
+              <td><%= f.label :carb_goal, "Carbs:" %></td>
+              <td><%= f.number_field :carb_goal, :id => "carbs" %></td>
+            </div>
+          </tr>
+          <tr>
+            <div class="field">
+              <td><%= f.label :protein_goal, "Protein:" %></td>
+              <td><%= f.number_field :protein_goal, :id => "protein" %></td>
+            </div>
+          </tr>
+          <tr>
+            <div class="field">
+              <td><%= f.label :fat_goal, "Fat:" %></td>
+              <td><%= f.number_field :fat_goal, :id => "fat"%> </td>
+            </div>
+          </tr>
 
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
+        </table>
 
-<p>
-  <strong>Activity level:</strong>
-  <%= @user.activity_level %>
-</p>
+        <div class="actions">
+          <div class="button-set">
+            <p><%= f.submit "Update", :class => "button-green update-button" %>
+              <a href="#" class="button-red cancel-button" id="close-macros">Cancel</a>
+            <%#= link_to "Cancel", user_url(current_user),   :class => "button-green cancel-button" %></p>
+          </div>
 
-<p>
-  <strong>Goal:</strong>
-  <%= @user.goal %>
-</p>
-
-<p>
-  <strong>Calorie goal:</strong>
-  <%= @user.calorie_goal %>
-</p>
-
-<p>
-  <strong>Fat goal:</strong>
-  <%= @user.fat_goal %>
-</p>
-
-<p>
-  <strong>Carb goal:</strong>
-  <%= @user.carb_goal %>
-</p>
-
-<p>
-  <strong>Protein goal:</strong>
-  <%= @user.protein_goal %>
-</p>
-
-<p>
-  <strong>Fiber goal:</strong>
-  <%= @user.fiber_goal %>
-</p>
-
-<p>
-  <strong>Sugar goal:</strong>
-  <%= @user.sugar_goal %>
-</p>
-
-<h2>Entries</h2>
-<% if !@user.entries.empty? %>
-<% @user.entries.each do |entry| %>
-<p>
-  <strong>Food</strong>
-  <%= entry.food_id %>
-</p>
-<p>
-  <strong>Amount</strong>
-  <%= entry.amount %>
-</p>
-<% end %>
-<% end %>
-
-<h2>Add an entry:</h2>
-
-<%= form_for([@user, @user.entries.build]) do |f| %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
 
-<p>
-  <%= f.label :food_id %> <br/>
-  <%= f.text_field :food_id %>
-</p>
-<p>
-  <%= f.label :amount %> <br/>
-  <%= f.text_field :amount %>
-</p>
-<p>
-  <%= f.label :day %> <br/>
-  <%= f.text_field :day %>
-</p>
-<p>
-  <%= f.label :meal %> <br/>
-  <%= f.text_field :meal %>
-</p>
-<%= f.submit %>
-<% end %>
+  <!-- End of modal -->
+
+  <table class="macros-tab">
+    <tr class="top-row">
+      <td class="calories">
+        <span>Calories</span>
+      </td>
+      <td>
+        Carbs
+      </td>
+      <td>
+        Protein
+      </td>
+      <td>
+        Fat
+      </td>
+    </tr>
+    <tr class="bottom-row">
+      <td class="calories">
+        <% if current_user.calorie_goal > 0 %>
+          <%=current_user.calorie_goal%>
+        <% end %>
+      </td>
+      <td class="carb">
+        <% if current_user.carb_goal > 0 %>
+          <%=current_user.carb_goal%>
+        <% end %>
+      </td>
+      <td class="protein">
+        <% if current_user.protein_goal > 0 %>
+          <%=current_user.protein_goal%>
+        <% end %>
+      </td>
+      <td class="fat">
+        <% if current_user.fat_goal > 0 %>
+          <% if current_user.fat_goal < 100 %>
+            <span style="margin-left:-30px"><%=current_user.fat_goal%></span>
+          <% else %>
+            <span style="margin-left:-45px"><%=current_user.fat_goal%></span>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+
+  </table>
+
+  <div class="profile-tab">
+
+    <p class="secondary-title"><%= current_user.username.capitalize %></p>
+
+    <table>
+
+      <tr>
+        <div class="field">
+          <td><strong>Weight:</strong></td>
+          <td><%= current_user.weight %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>Height:</strong></td>
+          <td><%= current_user.height %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>Age:</strong></td>
+          <td><%= current_user.age %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>Sex:</strong></td>
+          <td>
+            <%= User::SEX.key(current_user.sex) %>
+          </td>
+        </div>
+      </tr>
+      <% if current_user.bodyfat %>
+        <tr>
+          <div class="field">
+            <td><strong>Bodyfat:</strong></td>
+            <td><%= current_user.bodyfat %></td>
+          </div>
+        </tr>
+      <% end %>
+      <tr>
+        <div class="field">
+          <td><strong>BMR:</strong></td>
+          <td><%= current_user.bmr %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>TDEE:</strong></td>
+          <td><%= current_user.tdee %></td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="field">
+          <td><strong>Activity level:</strong></td>
+          <td><%= User::ACTIVITY.key(current_user.activity_level) %></td>
+        </div>
+      </tr>
+      <tr>
+        <div class="field">
+          <td><strong>Goal:</strong></td>
+          <td><%= User::GOAL.key(current_user.goal) %></td>
+        </div>
+      </tr>
+    </table>
+
+    <div class="actions">
+      <div class="button-set">
+        <p>
+        <%= link_to 'Edit', edit_user_path(current_user), :class => "button-green button edit-button" %>
+        <a href="#set_macros" class="button-green button macros-button" id="open-macros">Set macros</a>
+        <%#= link_to 'Set macros', edit_macros_url, :class => "button-green button macros-button" %></p>
+        <p><%= link_to 'Delete profile', current_user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button-red button delete-button" %></p>
+      </div>
+
+    </div>
+  </div>
 
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>
+<script src="<%= asset_path 'user_actions.js'%>"></script>

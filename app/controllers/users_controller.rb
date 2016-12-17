@@ -10,25 +10,57 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if(!current_user)
+      redirect_to login_path
+    end
   end
 
   # GET /users/new
   def new
     @user = User.new
+    @signup = true
   end
 
   # GET /users/1/edit
   def edit
+    if(!current_user)
+      redirect_to login_path
+    end
+    @settings = true
+  end
+
+  def edit_macros
+
+  end
+
+  def updt_macros
+    @user = current_user
+    @user.manual_macros(user_params)
+
+    respond_to do |format|
+
+      if @user.save
+
+        format.html { redirect_to @user}
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { redirect_to edit_user_path, notice: 'Update unsuccessful' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        session[:user_id] = @user.id
+        format.html { redirect_to edit_user_path(current_user), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -40,12 +72,20 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
+    @user = current_user
+
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+
+      if @user.update_attributes(user_params)
+
+        @user.set_macros
+        @user.save
+
+        format.html { redirect_to @user}#, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_user_path, notice: 'Update unsuccessful' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -54,12 +94,15 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    current_user.entries.delete_all
+    session[:user_id] = nil
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +112,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :weight, :height, :age, :activity_level, :goal, :calorie_goal, :fat_goal, :carb_goal, :protein_goal, :fiber_goal, :sugar_goal)
+      params.require(:user).permit(:username, :password, :password_confirmation, :email, :weight, :height, :sex, :age, :activity_level, :goal, :calorie_goal, :fat_goal, :carb_goal, :protein_goal, :fiber_goal, :sugar_goal, :bodyfat)
     end
+
 end

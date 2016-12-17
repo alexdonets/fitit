@@ -1,25 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  portion: MyString
+  name: "Whatever"
+  portion: "100g"
   calories: 1
   fat: 1.5
   carb: 1.5
   protein: 1.5
   fiber: 1.5
   sugar: 1.5
-  category: MyString
-  added_by: 1
+  category: "Grains"
 
 two:
-  name: MyString
-  portion: MyString
+  name: "MyString"
+  portion: "MyString"
   calories: 1
   fat: 1.5
   carb: 1.5
   protein: 1.5
   fiber: 1.5
   sugar: 1.5
-  category: MyString
-  added_by: 1
+  category: "MyString"

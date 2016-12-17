@@ -1,3 +1,270 @@
 // Place all the styles related to the Foods controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.foods-content {
+  margin-left: 50px;
+  margin-top: 80px;
+  text-align: left;
+}
+
+.foods-content .side-menu {
+  padding: 0;
+  width: 23%;
+  float: left;
+  margin-right: 5%;
+  background: none;
+  box-shadow: none;
+}
+
+.foods-content .main-form {
+  width: 72%;
+  float: right;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.foods-content .main-form .main-title {
+  position: absolute;
+  margin-left: -28px;
+  margin-top: -63px;
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 40px;
+}
+
+.foods-content>.main-form>div {
+  display: none;
+}
+
+.foods-content .main-form div.current {
+  // display: inline  -block;
+}
+
+.side-menu .food-groups {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.side-menu li {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  background: white;
+  // transition: background-color 0.2s;
+  color: inherit;
+  padding: 16px;
+  font-family: fantasy;
+}
+
+.side-menu li:not(:last-child) {
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.side-menu li:hover {
+  background: #ecf0f1;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.side-menu li.active {
+  background: #ecf0f1;
+}
+
+.foods {
+  width: 100%;
+  padding: 0;
+}
+
+.foods li.group {
+  display: inline-block;
+  width: 550px;
+  text-decoration: none;
+  color: inherit;
+  height: 38px;
+  margin: 5px;
+  padding: 0;
+  border: 1px solid #bdc3c7;
+  font-family: fantasy;
+}
+
+.foods .group .food-field {
+  display: block;
+  margin: 0;
+  height: 100%;
+  float: left;
+  width: calc( 100% - 125px);
+  padding: 13px 5px;
+  font-size: 20px;
+  border: none;
+  overflow: hidden;
+}
+
+.foods .group .food-field:hover {
+  background: #ecf0f1;
+  cursor: pointer;
+}
+
+.foods .group .food-field .small {
+  font-size: 14px;
+}
+
+.foods .group .input-amount {
+  height: 100%;
+  width: 55px;
+  float: left;
+  margin: 0;
+  border: none;
+  border-left: 1px solid #bdc3c7;
+  border-right: 1px solid #bdc3c7;
+  font-size: 14px;
+  padding: 4px;
+}
+
+.foods .group .add-btn {
+  height: 100%;
+  width: 70px;
+  float: left;
+  margin: 0;
+  border: none;
+  background: #2ecc71;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.foods .group .nutrition {
+  float: right;
+}
+
+.foods .group .nutrition .macros{
+  font-size: 12px;
+  float: right;
+  font-family: fantasy;
+  padding: 0;
+  margin-top: -8px;
+  margin-left: 20px;
+}
+
+.foods .group .nutrition .macros-table td{
+  font-family: fantasy;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.foods .group .nutrition .macros-table td:first-child {
+  text-align: center;
+  padding-left: 0;
+}
+
+.foods .group .nutrition .macros span{
+  display: block;
+  margin-top: -7px;
+  padding: 0;
+  text-align: right;
+}
+
+.food-form {
+  padding: 40px 50px;
+  width: 450px;
+  background: white;
+  margin:auto;
+  margin-top: 100px;
+  padding-bottom: 80px;
+}
+
+.food-form .main-title {
+  position: absolute;
+  margin-left: -40px;
+  margin-top: -74px;
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 40px;
+}
+
+.foods-content .new-food-btn {
+  float: right;
+  color: inherit;
+
+}
+
+.foods-content .new-food-btn:hover {
+  color: inherit;
+  background: #2ecc71;
+  text-decoration: none;
+}
+
+.food-form table {
+  width: 100%;
+  text-align: left;
+}
+
+.food-form table tr {
+}
+
+.food-form table tr td {
+  padding: 4px;
+}
+
+.food-form td input {
+  padding: 4px 5px;
+  width: 50px;
+}
+
+.food-form .name input {
+  width: 200px;
+}
+
+
+.food-form select {
+  width: 200px;
+
+}
+
+.food-form .accept-button {
+  float: left;
+  color: inherit;
+}
+
+
+.food-form .accept-button:hover {
+  background: #2ecc71;
+  color: inherit;
+  text-decoration: none;
+}
+
+.food-form .cancel-button {
+  float: right;
+  color: #ecf0f1;
+}
+
+.foods-content .main-form .food-modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.food-modal {
+  padding: 50px;
+}
+
+.food-modal .food-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.food-modal .delete-button {
+  float: right;
+}

@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In order to run the application Rails 4 must be installed.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+For windows: you can install Rails 4 with Ruby here => http://railsinstaller.org/en
+
+For ubuntu: follow this tutorial => http://railsapps.github.io/installrubyonrails-ubuntu.html
+
+After Rails are installed, in the command line/terminal navigate to the application folder and run "bundle install"
+
+After the bundle is installed issue a command "rails s" in order to start the server.
+
+The application will start running and will be available at localhost:3000 (port may vary depending on configuration).

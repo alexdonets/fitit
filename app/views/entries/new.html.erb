@@ -1,0 +1,20 @@
+<h2>Add an entry:</h2>
+
+<%= form_for([current_user, current_user.entries.build]) do |f| %>
+
+  Current food id: <%= params[:food_id] %>
+  <%= f.hidden_field :food_id, :value => params[:food_id] %>
+  <p>
+    <%= f.label :amount %> <br/>
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.label :day %> <br/>
+    <%= f.text_field :day %>
+  </p>
+  <p>
+    <%= f.label :meal %> <br/>
+    <%= f.text_field :meal %>
+  </p>
+  <%= f.submit %>
+<% end %>

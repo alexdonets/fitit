@@ -1,15 +1,191 @@
+
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+ *= require_tree
+*/
+
+
+body {
+  padding-top: 60px;
+  height: 100vh;
+  text-align: center;
+  background-color: #16a085;
+
+}
+
+/* BUTTONS */
+
+.button-green {
+  margin-top: 15px;
+  background: #2ecc71;
+  border: 0;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.button-green:hover {
+
+}
+
+.button-blue {
+
+
+}
+
+.button-red {
+  background: #e74c3c;
+  color: #ecf0f1;
+  margin-top: 15px;
+  border: 0;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.button-red:hover {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+.button-red:hover {
+  background: #e74c3c;
+  color: #ecf0f1;
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+
+.base-form {
+  position: relative;
+  display: inline-block;
+  background: white;
+  font-family: fantasy;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 0;
+  margin: 0;
+}
+
+.login-form, .signup-form {
+  display: inline-block;
+  margin: auto;
+  margin-top: 90px;
+  background: white;
+  width: 400px;
+  padding: 35px 60px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 16px;
+  font-family: fantasy;
+  text-align: left;
+}
+
+.login-form input, .signup-form input {
+  border: none;
+  border-bottom: 1px solid #bdc3c7;
+  width: 100%;
+}
+
+.login-form input:focus, .signup-form input:focus {
+  outline-width: 0;
+}
+
+.login-form p, .signup-form p {
+  font-size: 50px;
+}
+
+.login-form *, .signup-form * {
+  margin: 5px 0;
+}
+
+.login-form .title, .signup-form .title {
+  color: #16a085;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
+.login-form .login-button, .signup-form .signup-button {
+  margin-top: 15px;
+  width: 35%;
+
+}
+
+.nav, .navbar-nav, .nav-left, li.active {
+  background: black;
+}
+
+.navbar-header>.logo {
+  color: #bdc3c7;
+  font-size: 35px;
+  font-family: "Lucida Sans Unicode";
+  margin: auto 10px;
+
+}
+
+.navbar-header>.logo:hover {
+  color: white;
+  text-decoration: none;
+  background: inherit;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top li a {
+  color: #bdc3c7;
+
+}
+
+.navbar.navbar-inverse.navbar-fixed-top li a:hover {
+  color: #e6e6e6;
+}
+
+.navbar-inverse {
+  background: #141414;
+
+}
+
+.navbar-inverse li {
+  background: #141414;
+}
+
+.navbar-fixed-top {
+  color: white;
+}
+
+.fitit {
+  font-family: fantasy;
+  font-size: 40px;
+  margin: 0px 15px;
+}
+
+.nav-right {
+  float: right;
+}
+
+.about-content .about {
+  margin-top: 100px;
+  width: 400px;
+  height: 450px;
+  padding: 50px;
+  padding-top: 120px;
+  text-align: center;
+}
+
+.about-content .about img {
+  width: 400px;
+  height: auto;
+  margin-top: -176px;
+  margin-left: -50px;
+}
+
+.about-content .about table {
+  position: absolute;
+  bottom: 50px;
+  margin: auto;
+}
+
+.about-content .about td {
+  font-family: fantasy;
+  font-size: 16px;
+  padding: 5px;
+  text-align: center;
+  width: 100px;
+}
